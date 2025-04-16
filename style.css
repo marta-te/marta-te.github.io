@@ -1,8 +1,8 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #2d033b;
-    color: #f3e8ff;
+    background-color: #F0E5DF;
+    color: #1C002E;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,25 +10,54 @@ body {
     min-height: 100vh;
   }
   
-  header {
-    background-color: #810ca8;
+header {
+    background-color: #1C002E;
+    color: #F0E5DF;
     width: 100%;
     padding: 1rem;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   }
   
-  h1 {
+h1 {
     margin: 0;
   }
   
   main {
-    padding: 2rem;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+    background-color: #1C002E;
+    width: 100%;
+    min-height: 60vh;
+    position: relative; /* Ensure z-index works */
+    z-index: -2; /* Place it behind the rain canvas */
   }
   
-  button {
-    background-color: #c147e9;
+
+  .content-box {
+    background-color: rgba(0, 0, 0, 0.2); /* Semi-transparent black */
+    color: #B7AFF0; /* Text color */
+    padding: 2rem 3rem;
+    border-radius: 20px;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    text-align: center;
+    position: absolute; /* Position it independently */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1; /* Place it in front of the rain canvas */
+    backdrop-filter: blur(10px); /* Glass-like blur effect */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    border: 1px solid rgba(0, 0, 0, 0.3); /* Optional border for a frosted look */
+  }
+  
+  
+button {
+    background-color: #4D3A99;
     border: none;
     color: white;
     padding: 0.8rem 1.5rem;
@@ -36,18 +65,39 @@ body {
     font-size: 1rem;
     cursor: pointer;
     margin-top: 1rem;
-    transition: background-color 0.2s;
+    transition: background-color 0.3s;
   }
   
-  button:hover {
-    background-color: #a023d1;
+button:hover {
+    background-color: #B7AFF0;
+    color: #1C002E;
   }
   
-  footer {
-    margin-top: 2rem;
+footer {
+    margin-top: auto;
     padding: 1rem;
-    background-color: #810ca8;
+    background-color: #1C002E;
+    color: #F0E5DF;
     width: 100%;
     text-align: center;
   }
+  #rain-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Place it behind the content box but in front of the main */
+  }
   
+  #cat-image-container {
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  #cat-image-container img {
+    max-width: 100%; /* Ensure the image doesn't exceed the container's width */
+    max-height: 300px; /* Limit the height of the image */
+    border-radius: 10px; /* Optional: Add rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow for better visuals */
+  }

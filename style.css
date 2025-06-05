@@ -34,7 +34,7 @@ h1 {
     position: relative; /* Ensure z-index works */
     z-index: -2; /* Place it behind the rain canvas */
   }
-  
+
 
   .content-box {
     background-color: rgba(0, 0, 0, 0.2); /* Semi-transparent black */
@@ -54,8 +54,23 @@ h1 {
     -webkit-backdrop-filter: blur(10px); /* Safari support */
     border: 1px solid rgba(0, 0, 0, 0.3); /* Optional border for a frosted look */
   }
-  
-  
+  a {
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.3s;
+}
+
+a:hover {
+    background-color: #500000;
+    color: #ffffff;
+  }
+
 button {
     background-color: #4D3A99;
     border: none;
@@ -101,3 +116,4 @@ footer {
     border-radius: 10px; /* Optional: Add rounded corners */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow for better visuals */
   }
+

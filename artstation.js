@@ -4,33 +4,46 @@ async function loadArtStation(username) {
   container.innerHTML = '<p class="loading">Loading 3D artwork from ArtStation...</p>';
   
   try {
-    // Try multiple CORS proxy options
     const apiUrl = `https://www.artstation.com/users/${username}/projects.json`;
     
-    // Try proxies in order
+    // Try different proxy services with longer timeout
     const proxies = [
-      `https://api.allorigins.win/raw?url=${encodeURIComponent(apiUrl)}`,
-      `https://corsproxy.io/?${encodeURIComponent(apiUrl)}`,
-      `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(apiUrl)}`
+      { url: `https://api.allorigins.win/get?url=${encodeURIComponent(apiUrl)}`, parseJson: true },
+      { url: `https://corsproxy.io/?${encodeURIComponent(apiUrl)}`, parseJson: false },
+      { url: `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(apiUrl)}`, parseJson: false },
+      { url: `https://proxy.cors.sh/${apiUrl}`, parseJson: false }
     ];
     
     let data = null;
     let lastError = null;
     
-    for (const proxyUrl of proxies) {
+    for (const proxy of proxies) {
       try {
-        const response = await fetch(proxyUrl);
+        console.log(`Trying proxy: ${proxy.url.split('?')[0]}`);
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+        
+        const response = await fetch(proxy.url, {
+          signal: controller.signal,
+          headers: proxy.url.includes('cors.sh') ? { 'x-cors-api-key': 'temp_demo' } : {}
+        });
+        clearTimeout(timeoutId);
+        
         if (response.ok) {
-          data = await response.json();
+          const jsonData = await response.json();
+          // allorigins wraps response in .contents
+          data = proxy.parseJson && jsonData.contents ? JSON.parse(jsonData.contents) : jsonData;
+          console.log('Successfully loaded data');
           break;
         }
       } catch (e) {
+        console.error(`Proxy failed:`, e.message);
         lastError = e;
         continue;
       }
     }
     
-    if (!data) {
+    if (!data || !data.data) {
       throw lastError || new Error('All proxy attempts failed');
     }
     
@@ -40,7 +53,7 @@ async function loadArtStation(username) {
     console.error('Error loading ArtStation:', error);
     container.innerHTML = `
       <div class="error">
-        <p>Unable to load ArtStation projects due to browser restrictions.</p>
+        <p>Unable to load ArtStation projects at the moment.</p>
         <p><a href="https://www.artstation.com/${username}" target="_blank" rel="noopener noreferrer" 
            style="color: var(--accent-pink); text-decoration: none; font-weight: bold;">
           View my ArtStation profile directly →

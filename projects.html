@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects - Marta Teivāne</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .project-card {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 0;
+      border-radius: 35px;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto 2rem auto;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5),
+                  inset 0 2px 0 rgba(255, 255, 255, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      right: -1px;
+      bottom: -1px;
+      background: linear-gradient(135deg, 
+        var(--accent-pink),
+        var(--accent-purple),
+        var(--accent-cyan));
+      border-radius: 35px;
+      opacity: 0;
+      z-index: -1;
+      transition: opacity 0.3s ease;
+    }
+    
+    .project-card:hover::before {
+      opacity: 0.3;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(255, 20, 147, 0.4);
+    }
+    
+    .project-banner {
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+      border-radius: 35px 35px 0 0;
+      position: relative;
+    }
+    
+    .project-banner::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, 
+        transparent 0%, 
+        transparent 40%, 
+        rgba(0, 0, 0, 0.6) 100%);
+      pointer-events: none;
+    }
+    
+    .project-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .project-content {
+      padding: 2rem;
+    }
+    
+    .project-title {
+      font-size: 1.8rem;
+      margin: 0 0 0.5rem 0;
+      color: var(--primary-fg);
+      font-weight: 600;
+    }
+    
+    .project-year {
+      color: rgba(255, 255, 255, 0.7);
+      margin: 0 0 1rem 0;
+      font-size: 0.9rem;
+    }
+    
+    .project-description {
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+    
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .tech-tag {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
+      color: white;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .project-tag {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+      color: white;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .project-tag {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+      color: white;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .project-tag {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+      color: white;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .project-link {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
+    }
+    
+    .project-link:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 212, 255, 0.6);
+    }
+    
+    @media (max-width: 768px) {
+      .project-banner {
+        height: 250px;
+      }
+      
+      .project-content {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="art.html">Art</a></li>
+      <li><a href="plants.html">Plants</a></li>
+      <li><a href="scrapbook.html">Scrapbook</a></li>
+      <li><a href="blog.html">Blog</a></li>
+    </ul>
+  </nav>
+
+  <main class="page-container">
+    <div id="projects-container">
+      <p class="loading">Loading projects...</p>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2026 Marta-te
+  </footer>
+
+  <script src="projects.js"></script>
+</body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scrapbook - Marta Teivāne</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Two-column layout */
+    .scrapbook-layout {
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+    
+    .scrapbook-sidebar {
+      flex: 0 0 480px;
+      padding-right: 1rem;
+    }
+    
+    /* Filter controls in 2x2 grid */
+    .filter-controls {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    
+    .filter-box {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(15px);
+      border-radius: 20px;
+      padding: 1rem;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      min-height: fit-content;
+    }
+    
+    .filter-box h3 {
+      font-size: 0.9rem;
+      margin: 0 0 0.5rem 0;
+      color: var(--accent-pink);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .filter-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    
+    .filter-btn {
+      padding: 0.3rem 0.8rem;
+      font-size: 0.75rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .filter-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.05);
+    }
+    
+    .filter-btn.active {
+      background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+      border-color: var(--accent-pink);
+      box-shadow: 0 2px 10px rgba(255, 20, 147, 0.4);
+    }
+    
+    .clear-filters {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-weight: 500;
+    }
+    
+    .clear-filters:hover {
+      background: rgba(255, 20, 147, 0.3);
+      border-color: var(--accent-pink);
+    }
+    
+    .scrapbook-sidebar::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    .scrapbook-sidebar::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+    }
+    
+    .scrapbook-sidebar::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+      border-radius: 10px;
+    }
+    
+    .scrapbook-main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 600px;
+      gap: 2rem;
+    }
+    
+    .scrapbook-controls-right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .filter-count {
+      text-align: center;
+      font-size: 1.1rem;
+      color: var(--primary-fg);
+      font-weight: 500;
+    }
+    
+    /* Single page viewer */
+    #scrapbook-viewer {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .scrapbook-card {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 35px;
+      overflow: hidden;
+      box-shadow: 0 15px 60px rgba(0, 0, 0, 0.6),
+                  inset 0 2px 0 rgba(255, 255, 255, 0.2);
+      border: 3px solid rgba(255, 255, 255, 0.4);
+      transition: all 0.5s ease;
+      position: relative;
+      max-width: 100%;
+      animation: fadeInScale 0.5s ease;
+    }
+    
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    .scrapbook-card::before {
+      content: '';
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      right: -3px;
+      bottom: -3px;
+      background: linear-gradient(45deg, 
+        var(--accent-pink), 
+        var(--accent-purple),
+        var(--accent-cyan),
+        var(--accent-pink));
+      border-radius: 35px;
+      z-index: -1;
+      opacity: 0.6;
+      filter: blur(15px);
+      animation: rotate-border 6s linear infinite;
+    }
+    
+    .scrapbook-card img {
+      width: 100%;
+      height: auto;
+      max-height: 70vh;
+      object-fit: contain;
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .scrapbook-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .tag {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+      color: white;
+      border-radius: 25px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .tag-pink { background: linear-gradient(135deg, #ff1493, #ff69b4); }
+    .tag-blue { background: linear-gradient(135deg, #00d4ff, #6b5ce7); }
+    .tag-purple { background: linear-gradient(135deg, #6b5ce7, #9b59d0); }
+    .tag-green { background: linear-gradient(135deg, #00ff88, #00d4aa); }
+    .tag-cream { background: linear-gradient(135deg, #f0e5df, #e6d5cf); color: var(--primary-bg); }
+    .tag-gold { background: linear-gradient(135deg, #ffd700, #ffed4e); color: var(--primary-bg); }
+    
+    /* Navigation buttons */
+    .scrapbook-navigation {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    
+    .nav-button {
+      background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 35px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 25px rgba(107, 92, 231, 0.6);
+      font-weight: 500;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .nav-button::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+    
+    .nav-button:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+    
+    .nav-button:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 8px 30px rgba(255, 20, 147, 0.7);
+    }
+    
+    .nav-button:active {
+      transform: translateY(0px) scale(0.98);
+    }
+    
+    .nav-button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    .nav-compact {
+      padding: 0.8rem 1.5rem;
+      font-size: 0.95rem;
+    }
+    
+    .shuffle-btn {
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+    }
+    
+    /* Responsive layout */
+    @media (max-width: 1024px) {
+      .scrapbook-sidebar {
+        flex: 0 0 380px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .scrapbook-layout {
+        flex-direction: column;
+      }
+      
+      .scrapbook-sidebar {
+        flex: 1;
+        position: relative;
+        top: 0;
+        max-height: none;
+        width: 100%;
+        padding-right: 0;
+        margin-bottom: 2rem;
+      }
+      
+      .scrapbook-main {
+        width: 100%;
+      }
+      
+      #scrapbook-viewer {
+        min-height: 400px;
+      }
+      
+      .nav-button {
+        flex: 1;
+        min-width: 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="art.html">Art</a></li>
+      <li><a href="plants.html">Plants</a></li>
+      <li><a href="scrapbook.html" class="active">Scrapbook</a></li>
+      <li><a href="blog.html">Blog</a></li>
+    </ul>
+  </nav>
+
+  <main class="page-container">
+    <div class="scrapbook-layout">
+      <!-- Left sidebar with filters and controls -->
+      <div class="scrapbook-sidebar">
+        <button class="clear-filters" onclick="scrapbookFilter.clearFilters()">
+          Clear All Filters
+        </button>
+
+        <div class="filter-controls" id="filter-controls">
+          <p class="loading">Loading filters...</p>
+        </div>
+      </div>
+
+      <!-- Right main area with scrapbook page and controls -->
+      <div class="scrapbook-main">
+        <div id="scrapbook-viewer">
+          <p class="loading">Loading scrapbook...</p>
+        </div>
+        
+        <div class="scrapbook-controls-right">
+          <div class="filter-count" id="result-count">
+            Page 1 of 8
+          </div>
+
+          <div class="scrapbook-navigation">
+            <button class="nav-button nav-compact" id="prev-btn" onclick="scrapbookFilter.prevPage()">
+              ← Prev
+            </button>
+            <button class="nav-button nav-compact shuffle-btn" onclick="scrapbookFilter.randomPage()">
+              🎲
+            </button>
+            <button class="nav-button nav-compact" id="next-btn" onclick="scrapbookFilter.nextPage()">
+              Next →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2026 Marta-te
+  </footer>
+
+  <script src="scrapbook.js"></script>
+</body>
+</html>

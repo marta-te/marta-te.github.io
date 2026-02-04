@@ -1,0 +1,74 @@
+{
+  "pages": [
+    {
+      "id": 1,
+      "imagePath": "scrapbook/page-01.png",
+      "colors": ["blue", "yellow"],
+      "styles": ["vintage", "romantic"],
+      "elements": ["cutouts", "typography"],
+      "mood": ["dreamy", "soft"]
+    },
+    {
+      "id": 2,
+      "imagePath": "scrapbook/page-02.png",
+      "colors": ["yellow", "green"],
+      "styles": ["maximalist", "vintage"],
+      "elements": ["geometric", "cutouts", "photos", "stickers", "typography"],
+      "mood": ["clean", "dreamy"]
+    },
+    {
+      "id": 3,
+      "imagePath": "scrapbook/page-03.png",
+      "colors": ["purple", "silver", "blue", "pink"],
+      "styles": ["vintage", "elegant"],
+      "elements": ["cutouts", "typography"],
+      "mood": ["moody", "sophisticated"]
+    },
+    {
+      "id": 4,
+      "imagePath": "scrapbook/page-04.png",
+      "colors": ["yellow", "green", "white"],
+      "styles": ["romantic", "cottagecore"],
+      "elements": ["florals", "photos", "tickets"],
+      "mood": ["soft", "playful"]
+    },
+    {
+      "id": 5,
+      "imagePath": "scrapbook/page-05.png",
+      "colors": ["gold", "cream", "black"],
+      "styles": ["cottagecore", "vintage"],
+      "elements": ["florals", "stickers", "typography", "tickets"],
+      "mood": ["vintage", "moody"]
+    },
+    {
+      "id": 6,
+      "imagePath": "scrapbook/page-06.png",
+      "colors": ["blue", "gold"],
+      "styles": ["modern", "elegant"],
+      "elements": ["geometric", "typography"],
+      "mood": ["moody", "sophisticated"]
+    },
+    {
+      "id": 7,
+      "imagePath": "scrapbook/page-07.png",
+      "colors": ["green", "gold", "cream"],
+      "styles": ["romantic", "grunge"],
+      "elements": ["photos", "stickers","typography"],
+      "mood": ["moody", "vintage"]
+    },
+    {
+      "id": 8,
+      "imagePath": "scrapbook/page-08.png",
+      "colors": ["blue", "green"],
+      "styles": ["minimalist", "elegant"],
+      "elements": ["cardboard", "cutouts", "typography"],
+      "mood": ["clean", "sophisticated"]
+    }
+  ],
+  "filterCategories": {
+    "colors": ["pink", "blue", "purple", "green", "yellow", "cream", "gold", "silver", "white", "black"],
+    "styles": ["vintage", "modern", "minimalist", "maximalist", "romantic", "elegant", "grunge", "cottagecore"],
+    "elements": ["florals", "geometric", "cutouts", "typography", "photos", "stickers", "tickets", "cardboard"],
+    "mood": ["dreamy", "soft", "clean", "moody", "playful", "sophisticated", "vintage"]
+  }
+}

@@ -1,49 +1,337 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script>
-  document.addEventListener('gesturestart', function (e) {
-    e.preventDefault();
-  });
-</script>
-
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-  <title>Marta Teivāne</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marta Teivāne - Portfolio</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .hero-section {
+      padding: 4rem 2rem;
+      text-align: center;
+      position: relative;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .hero-content {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      padding: 4rem 3rem;
+      border-radius: 40px;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6),
+                  inset 0 2px 0 rgba(255, 255, 255, 0.2);
+      border: 3px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .hero-content::before {
+      content: '';
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      right: -3px;
+      bottom: -3px;
+      background: linear-gradient(135deg, 
+        var(--accent-pink),
+        var(--accent-purple),
+        var(--accent-cyan));
+      border-radius: 40px;
+      opacity: 0.15;
+      z-index: -1;
+    }
+    
+    .hero-title {
+      font-size: 3.5rem;
+      margin: 0 0 1rem 0;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.5rem;
+      margin: 0 0 2rem 0;
+      color: rgba(255, 255, 255, 0.95);
+      font-weight: 500;
+    }
+    
+    .hero-description {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      color: rgba(255, 255, 255, 0.85);
+    }
+    
+    .about-section {
+      margin: 2.5rem 0;
+      text-align: left;
+    }
+    
+    .about-section h2 {
+      color: var(--primary-fg);
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .about-section p {
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.8;
+      font-size: 1.05rem;
+      margin-bottom: 1rem;
+    }
+    
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 1.5rem 0;
+    }
+    
+    .skill-tag {
+      padding: 0.6rem 1.2rem;
+      background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
+      color: white;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .skill-tag:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 6px 20px rgba(255, 20, 147, 0.5);
+    }
+    
+    .contact-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .contact-btn {
+      padding: 0.8rem 2rem;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 500;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+    
+    .contact-btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 212, 255, 0.6);
+    }
+    
+    .profile-image-container {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .profile-image {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4),
+                  0 0 20px rgba(107, 92, 231, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .profile-image:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 40px rgba(255, 20, 147, 0.5),
+                  0 0 30px rgba(107, 92, 231, 0.5);
+    }
+    
+    .organization-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    
+    .org-badge {
+      padding: 0.6rem 1.2rem;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 2px solid;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .org-badge:hover {
+      transform: translateY(-3px) scale(1.05);
+    }
+    
+    .org-badge img {
+      height: 1.2rem;
+      width: auto;
+    }
+    
+    .org-badge.future-heroes {
+      background: linear-gradient(135deg, #000000, #333333);
+      color: white;
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+    
+    .org-badge.future-heroes:hover {
+      box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+    }
+    
+    .org-badge.ivg-world {
+      background: linear-gradient(135deg, #6B2C91, #000000);
+      color: white;
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+    
+    .org-badge.ivg-world:hover {
+      box-shadow: 0 6px 20px rgba(107, 44, 145, 0.5);
+    }
+    
+    .org-badge.startschool {
+      background: linear-gradient(135deg, #000dff, #ff00ea);
+      color: white;
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+    
+    .org-badge.startschool:hover {
+      box-shadow: 0 6px 20px rgba(0, 168, 232, 0.5);
+    }
+    
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .hero-content {
+        padding: 3rem 2rem;
+      }
+    }
+  </style>
 </head>
-<script>
-  document.addEventListener('gesturestart', function (e) {
-    e.preventDefault();
-  });
-</script>
-
 <body>
-  <header>
-    <h1>Welcome to the Martas site</h1>
-  </header>
-  <main class="main">
-    <!-- Main content or background https://marta-te.github.io/asteria-clicker/ -->
-  </main>
-  </div>
-    <div class="content-box">
-    <p>My name is Marta and I am really cool.</p>
-        <p>____________________</p>
-    <p>Sometimes I make games.</p>
-    <a href="https://marta-te.github.io/asteria-clicker/" target="_blank" class="button-link">Asteria clicker</a>
-    <p>____________________</p>
-    <p>and i like cats</p>
-    <button id="cat-button">Click Me</button>
-    <div id="cat-image-container"></div> <!-- Container for the cat image -->
-    <!-- <a href="plants.html" class="button-link">See My Plants</a> -->
+  <nav>
+    <ul>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="art.html">Art</a></li>
+      <li><a href="plants.html">Plants</a></li>
+      <li><a href="scrapbook.html">Scrapbook</a></li>
+      <li><a href="blog.html">Blog</a></li>
+    </ul>
+  </nav>
 
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="profile-image-container">
+        <img src="images/me.JPG" alt="Marta Teivāne" class="profile-image">
+      </div>
+      <h1 class="hero-title">Hi, I'm Marta!</h1>
+      <p class="hero-subtitle">Creative Developer & Digital Artist</p>
+      <p class="hero-description">
+        I'm a creative developer and digital artist who loves bringing ideas to life 
+        through code and art. Whether it's building interactive games, creating 3D models, 
+        or crafting illustrations, I find joy in the entire creative process.
+      </p>
+
+      <div class="about-section">
+        <h2>What I Do</h2>
+        <p>
+          I specialize in game development and digital art. My work spans across 
+          interactive web experiences, 3D modeling, and 2D digital art. I enjoy 
+          experimenting with new technologies and pushing creative boundaries in this new age of cool tech.
+        </p>
+      </div>
+
+      <div class="about-section">
+        <h2>Skills & Tools</h2>
+        <div class="skills-list">
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">HTML/CSS</span>
+          <span class="skill-tag">3D Modeling</span>
+          <span class="skill-tag">Digital Illustration</span>
+          <span class="skill-tag">Game Development</span>
+          <span class="skill-tag">Web Design</span>
+                    <span class="skill-tag">XR/VR/AR</span>
+          <span class="skill-tag">UI/UX</span>
+          <span class="skill-tag">Blender</span>
+        </div>
+      </div>
+
+      <div class="about-section">
+        <h2>Beyond Code</h2>
+        <p>
+          When I'm not coding or creating art, you'll find me exploring nature and 
+          taking pictures or working on my next passion project.
+        </p>
+      </div>
+
+      <div class="about-section">
+        <h2>Projects I've Participated In</h2>
+        <div class="organization-badges">
+          <a href="https://futureheroes.lv/" target="_blank" class="org-badge future-heroes">
+            <img src="https://static.tildacdn.net/tild3330-6137-4830-b832-396631613862/FutureHeroes_logo.png" alt="Future Heroes">
+            <span>Future Heroes</span>
+          </a>
+          <a href="https://www.linkedin.com/company/innovationgirls/" target="_blank" class="org-badge ivg-world">
+            <img src="https://static.wixstatic.com/media/a61104_7042b18ae61944348bce9b57b6414af7~mv2.png/v1/fit/w_2500,h_1330,al_c/a61104_7042b18ae61944348bce9b57b6414af7~mv2.png" alt="Future Heroes">
+            <span>IVG World</span>
+          </a>
+          <a href="https://www.startschool.org/" target="_blank" class="org-badge startschool">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2YXEmC8Mbw_KZy2xP8KOLZys4mg92cfHuvQ&s" alt="Future Heroes">
+            <span>StartSchool</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="about-section">
+        <h2>Let's Connect</h2>
+        <p style="text-align: center;">
+          Feel free to explore my work and reach out if you'd like to collaborate or 
+          just say hello!
+        </p>
+        <div class="contact-links">
+          <a href="mailto:teivanemarta@gmail.com" class="contact-btn">Email Me</a>
+          <a href="https://github.com/marta-te" target="_blank" class="contact-btn">GitHub</a>
+          <a href="https://www.linkedin.com/in/marta-teivane/" target="_blank" class="contact-btn">LinkedIn</a>
+          <a href="https://www.instagram.com/marta.te" target="_blank" class="contact-btn">Instagram</a>
+        </div>
+      </div>
     </div>
+  </section>
 
-
-  
   <footer>
-    &copy; 2025 Marta-te
+    &copy; 2026 Marta-te
   </footer>
+  
   <canvas id="rain-canvas"></canvas>
   <script src="rain.js"></script>
 </body>

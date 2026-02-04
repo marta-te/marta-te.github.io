@@ -1,0 +1,31 @@
+{
+  "artworks": [
+    {
+      "id": 1,
+      "title": "Efi with goopy goops",
+      "medium": "Digital Painting",
+      "dateCreated": "2026-01-06",
+      "imagePath": "art-2d/efi.PNG",
+      "description": "An illustration of Efi- my DnD squadmates character in an adventure where she kept collecting goopy goop.",
+      "tags": ["digital", "DnD", "character art", "fantasy"]
+    },
+    {
+      "id": 2,
+      "title": "Xaduma catmaid",
+      "medium": "Digital Painting",
+      "dateCreated": "2025-08-12",
+      "imagePath": "art-2d/femduma_square.png",
+      "description": "Xaduma is a musician. He is in a music collective Life gets worse, and joked about someone drawing him as a catmaid. I was the one to do it.",
+      "tags": ["digital", "character art", "meme"]
+    },
+    {
+      "id": 3,
+      "title": "Švarcmuiža",
+      "medium": "Ink and Watercolor",
+      "dateCreated": "2024-04-16",
+      "imagePath": "art-2d/shwarcmuizha.jpg",
+      "description": "Švarcmiža manor house in Latvia, for school.",
+      "tags": ["ink", "watercolor", "landscape"]
+    }
+  ]
+}

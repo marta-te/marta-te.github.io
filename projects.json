@@ -1,0 +1,34 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "Asteria Clicker",
+      "description": "An incremental idle clicker game where you collect stars and unlock upgrades.",
+      "bannerImage": "projects-images/asteria-banner.png",
+      "link": "https://marta-te.github.io/asteria-clicker/",
+      "technologies": ["JavaScript", "HTML", "CSS"],
+      "tags": ["Personal", "Game"],
+      "year": "2025"
+    },
+    {
+      "id": 2,
+      "title": "Veggie quiz",
+      "description": "A fun quiz game to find out what veggie are you. Made in StartSchool collaborative coding sessions with Carlos Mestre.",
+      "bannerImage": "projects-images/veggie.png",
+      "link": "https://carlosmestre1997.github.io/SSQuiz/",
+      "technologies": ["JavaScript", "HTML", "CSS"],
+      "tags": ["StartSchool", "Collaborative"],
+      "year": "2025"
+    },
+    {
+      "id": 3,
+      "title": "Daily Horoscope",
+      "description": "A web app that provides daily horoscope readings based on your zodiac sign. Made in StartSchool collaborative coding sessions with Rolands Silins and Inga.",
+      "bannerImage": "projects-images/daily-horoscope.png",
+      "link": "https://rolandssilins-lgtm.github.io/Horoscope.api/",
+      "technologies": ["CSS", "JavaScript", "HTML"],
+      "tags": ["StartSchool", "Collaborative"],
+      "year": "2025"
+    }
+  ]
+}

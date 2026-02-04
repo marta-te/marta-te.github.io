@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Art Gallery - Marta Teivāne</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="art.html" class="active">Art</a></li>
+      <li><a href="plants.html">Plants</a></li>
+      <li><a href="scrapbook.html">Scrapbook</a></li>
+      <li><a href="blog.html">Blog</a></li>
+    </ul>
+  </nav>
+
+  <main class="page-container">
+    <div class="tabs">
+      <button class="tab-button active" data-tab="3d" onclick="switchTab('3d')">3D Art</button>
+      <button class="tab-button" data-tab="2d" onclick="switchTab('2d')">2D Art</button>
+    </div>
+
+    <div id="tab-3d" class="tab-content active">
+      <div id="artstation-gallery">
+        <p class="loading">Loading 3D artwork from ArtStation...</p>
+      </div>
+    </div>
+
+    <div id="tab-2d" class="tab-content">
+      <div id="art-2d-gallery">
+        <p class="loading">Loading 2D artwork...</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2026 Marta-te
+  </footer>
+
+  <script>
+    function switchTab(tabName) {
+      // Update tab buttons
+      document.querySelectorAll('.tab-button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+      
+      // Update tab content
+      document.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.remove('active');
+      });
+      document.getElementById(`tab-${tabName}`).classList.add('active');
+    }
+    
+    // Load 3D art on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      // Load ArtStation immediately since 3D tab is active by default
+      const script = document.createElement('script');
+      script.src = 'artstation.js';
+      script.onload = () => {
+        loadArtStation('marta-teivane');
+      };
+      document.body.appendChild(script);
+    });
+  </script>
+  <script src="art-2d.js"></script>
+  <script src="lightbox.js"></script>
+</body>
+</html>

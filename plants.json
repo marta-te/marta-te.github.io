@@ -1,0 +1,24 @@
+{
+  "plants": [
+    {
+      "id": 1,
+      "commonName": "Wood forget-me-not",
+      "scientificName": "Myosotis sylvatica",
+      "imagePath": "plants/neaizmirstulites.jpg",
+      "dateFound": "2025-04-15",
+      "location": "Somewhere in Riga",
+      "notes": "Beautiful blue flowers",
+      "tags": ["blue", "spring", "woodland"]
+    },
+    {
+      "id": 2,
+      "commonName": "Mezereon",
+      "scientificName": "Daphne mezereum L.",
+      "imagePath": "plants/zalktene.JPG",
+      "dateFound": "2025-03-20",
+      "location": "Kaltenes kalvas",
+      "notes": "poisonous",
+      "tags": ["pink", "spring", "shrub"]
+    }
+  ]
+}

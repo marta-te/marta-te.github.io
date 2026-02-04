@@ -5,6 +5,10 @@ if (canvas) {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
+  // Pre-fill canvas with background color to prevent white flash
+  ctx.fillStyle = '#1a0f3d';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
   const raindrops = [];
   const numDrops = 150;
 

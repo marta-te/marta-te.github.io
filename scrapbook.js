@@ -19,7 +19,12 @@ class ScrapbookFilter {
         throw new Error('Failed to load scrapbook data');
       }
       const data = await response.json();
-      this.allPages = data.pages;
+      // Sort pages: square first, then by ID
+      this.allPages = data.pages.sort((a, b) => {
+        if (a.shape === 'square' && b.shape !== 'square') return -1;
+        if (a.shape !== 'square' && b.shape === 'square') return 1;
+        return a.id - b.id;
+      });
       this.filterData = data.filterCategories;
       
       this.renderFilterControls();
@@ -117,10 +122,6 @@ class ScrapbookFilter {
     viewer.innerHTML = `
       <div class="scrapbook-card" data-page-num="#${page.id}">
         <img src="${page.imagePath}" alt="Scrapbook page ${page.id}" />
-        <div class="scrapbook-tags">
-          ${page.colors.slice(0, 3).map(color => `<span class="tag tag-${color}">${color}</span>`).join('')}
-          ${page.styles.slice(0, 2).map(style => `<span class="tag">${style}</span>`).join('')}
-        </div>
       </div>
     `;
     

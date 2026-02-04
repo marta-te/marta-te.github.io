@@ -8,9 +8,26 @@ async function loadArtStation(username) {
     
     // Try different proxy services
     const proxies = [
-      { url: `https://api.allorigins.win/get?url=${encodeURIComponent(apiUrl)}`, parseJson: true },
-      { url: `https://thingproxy.freeboard.io/fetch/${apiUrl}`, parseJson: false },
-      { url: `https://corsproxy.io/?${encodeURIComponent(apiUrl)}`, parseJson: false }
+      { 
+        url: `https://api.allorigins.win/get?url=${encodeURIComponent(apiUrl)}`, 
+        parse: (json) => {
+          try {
+            // allorigins returns {contents: "stringified json", status: {...}}
+            return typeof json.contents === 'string' ? JSON.parse(json.contents) : json.contents;
+          } catch (e) {
+            console.error('Failed to parse allorigins response:', e);
+            return null;
+          }
+        }
+      },
+      { 
+        url: `https://thingproxy.freeboard.io/fetch/${apiUrl}`, 
+        parse: (json) => json 
+      },
+      { 
+        url: `https://corsproxy.io/?${encodeURIComponent(apiUrl)}`, 
+        parse: (json) => json 
+      }
     ];
     
     let data = null;
@@ -20,7 +37,7 @@ async function loadArtStation(username) {
       try {
         console.log(`Trying proxy: ${proxy.url.split('?')[0]}`);
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 15000); // 15 second timeout
+        const timeoutId = setTimeout(() => controller.abort(), 15000);
         
         const response = await fetch(proxy.url, {
           signal: controller.signal,
@@ -30,13 +47,18 @@ async function loadArtStation(username) {
         
         if (response.ok) {
           const jsonData = await response.json();
-          // allorigins wraps response in .contents
-          data = proxy.parseJson && jsonData.contents ? JSON.parse(jsonData.contents) : jsonData;
-          console.log('Successfully loaded data from:', proxy.url.split('?')[0]);
-          break;
+          data = proxy.parse(jsonData);
+          
+          if (data && data.data) {
+            console.log('Successfully loaded data from:', proxy.url.split('?')[0]);
+            break;
+          } else {
+            console.log('Data format invalid from this proxy, trying next...');
+            data = null;
+          }
         }
       } catch (e) {
-        console.error(`Proxy failed:`, e.message);
+        console.error(`Proxy ${proxy.url.split('?')[0]} failed:`, e.message);
         lastError = e;
         continue;
       }

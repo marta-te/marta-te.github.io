@@ -169,13 +169,55 @@
       background: linear-gradient(45deg, 
         var(--accent-pink), 
         var(--accent-purple),
-        var(--accent-cyan),
-        var(--accent-pink));
+        var(--accent-cyan));
       border-radius: 35px;
       z-index: -1;
-      opacity: 0.6;
+      opacity: 0.3;
       filter: blur(15px);
-      animation: rotate-border 6s linear infinite;
+    }
+    
+    @media (max-width: 768px) {
+      .scrapbook-layout {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      
+      .scrapbook-sidebar {
+        flex: none;
+        width: 100%;
+        padding-right: 0;
+      }
+      
+      .filter-controls {
+        grid-template-columns: 1fr;
+      }
+      
+      .filter-box {
+        padding: 0.75rem;
+      }
+      
+      .scrapbook-main {
+        width: 100%;
+      }
+      
+      .scrapbook-card img {
+        max-height: 50vh;
+      }
+      
+      .page-navigation {
+        flex-direction: row !important;
+        justify-content: space-between;
+      }
+      
+      .nav-button {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+      }
+      
+      .clear-filters-btn {
+        font-size: 0.85rem;
+        padding: 0.6rem 1rem;
+      }
     }
     
     .scrapbook-card img {

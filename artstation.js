@@ -4,17 +4,36 @@ async function loadArtStation(username) {
   container.innerHTML = '<p class="loading">Loading 3D artwork from ArtStation...</p>';
   
   try {
-    // Use CORS proxy to bypass CORS restrictions
+    // Try multiple CORS proxy options
     const apiUrl = `https://www.artstation.com/users/${username}/projects.json`;
-    const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(apiUrl)}`;
     
-    const response = await fetch(proxyUrl);
+    // Try proxies in order
+    const proxies = [
+      `https://api.allorigins.win/raw?url=${encodeURIComponent(apiUrl)}`,
+      `https://corsproxy.io/?${encodeURIComponent(apiUrl)}`,
+      `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(apiUrl)}`
+    ];
     
-    if (!response.ok) {
-      throw new Error('Failed to load ArtStation projects');
+    let data = null;
+    let lastError = null;
+    
+    for (const proxyUrl of proxies) {
+      try {
+        const response = await fetch(proxyUrl);
+        if (response.ok) {
+          data = await response.json();
+          break;
+        }
+      } catch (e) {
+        lastError = e;
+        continue;
+      }
     }
     
-    const data = await response.json();
+    if (!data) {
+      throw lastError || new Error('All proxy attempts failed');
+    }
+    
     renderArtStationProjects(data.data || []);
     
   } catch (error) {

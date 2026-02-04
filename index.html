@@ -31,21 +31,7 @@
       border: 3px solid rgba(255, 255, 255, 0.3);
     }
     
-    .hero-content::before {
-      content: '';
-      position: absolute;
-      top: -3px;
-      left: -3px;
-      right: -3px;
-      bottom: -3px;
-      background: linear-gradient(135deg, 
-        var(--accent-pink),
-        var(--accent-purple),
-        var(--accent-cyan));
-      border-radius: 40px;
-      opacity: 0.15;
-      z-index: -1;
-    }
+
     
     .hero-title {
       font-size: 3.5rem;
@@ -227,12 +213,48 @@
     }
     
     @media (max-width: 768px) {
+      .hero-section {
+        padding: 2rem 1rem;
+        min-height: auto;
+      }
+      
       .hero-title {
-        font-size: 2.5rem;
+        font-size: 2rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.2rem;
+      }
+      
+      .hero-description {
+        font-size: 1rem;
       }
       
       .hero-content {
-        padding: 3rem 2rem;
+        padding: 2rem 1.5rem;
+        border-radius: 30px;
+      }
+      
+      .profile-image {
+        width: 150px;
+        height: 150px;
+      }
+      
+      .about-section h2 {
+        font-size: 1.5rem;
+      }
+      
+      .about-section p {
+        font-size: 0.95rem;
+      }
+      
+      .skills-list, .organization-badges, .contact-links {
+        justify-content: center;
+      }
+      
+      .skill-tag, .org-badge, .contact-btn {
+        font-size: 0.85rem;
+        padding: 0.5rem 1rem;
       }
     }
   </style>

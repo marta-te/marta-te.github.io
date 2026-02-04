@@ -1,5 +1,8 @@
 const canvas = document.getElementById('rain-canvas');
-if (canvas) {
+// Skip animation on mobile devices for better performance
+const isMobile = window.innerWidth <= 768;
+
+if (canvas && !isMobile) {
   const ctx = canvas.getContext('2d');
 
   canvas.width = window.innerWidth;

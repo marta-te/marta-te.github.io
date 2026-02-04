@@ -1137,6 +1137,10 @@ footer {
 
 /* Mobile responsive for plants */
 @media (max-width: 768px) {
+  #rain-canvas {
+    display: none;
+  }
+  
   .plant-grid {
     gap: 1rem;
     padding: 0 0.5rem;

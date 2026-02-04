@@ -6,12 +6,11 @@ async function loadArtStation(username) {
   try {
     const apiUrl = `https://www.artstation.com/users/${username}/projects.json`;
     
-    // Try different proxy services with longer timeout
+    // Try different proxy services
     const proxies = [
       { url: `https://api.allorigins.win/get?url=${encodeURIComponent(apiUrl)}`, parseJson: true },
-      { url: `https://corsproxy.io/?${encodeURIComponent(apiUrl)}`, parseJson: false },
-      { url: `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(apiUrl)}`, parseJson: false },
-      { url: `https://proxy.cors.sh/${apiUrl}`, parseJson: false }
+      { url: `https://thingproxy.freeboard.io/fetch/${apiUrl}`, parseJson: false },
+      { url: `https://corsproxy.io/?${encodeURIComponent(apiUrl)}`, parseJson: false }
     ];
     
     let data = null;
@@ -21,11 +20,11 @@ async function loadArtStation(username) {
       try {
         console.log(`Trying proxy: ${proxy.url.split('?')[0]}`);
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+        const timeoutId = setTimeout(() => controller.abort(), 15000); // 15 second timeout
         
         const response = await fetch(proxy.url, {
           signal: controller.signal,
-          headers: proxy.url.includes('cors.sh') ? { 'x-cors-api-key': 'temp_demo' } : {}
+          method: 'GET'
         });
         clearTimeout(timeoutId);
         
@@ -33,7 +32,7 @@ async function loadArtStation(username) {
           const jsonData = await response.json();
           // allorigins wraps response in .contents
           data = proxy.parseJson && jsonData.contents ? JSON.parse(jsonData.contents) : jsonData;
-          console.log('Successfully loaded data');
+          console.log('Successfully loaded data from:', proxy.url.split('?')[0]);
           break;
         }
       } catch (e) {
@@ -52,12 +51,15 @@ async function loadArtStation(username) {
   } catch (error) {
     console.error('Error loading ArtStation:', error);
     container.innerHTML = `
-      <div class="error">
-        <p>Unable to load ArtStation projects at the moment.</p>
-        <p><a href="https://www.artstation.com/${username}" target="_blank" rel="noopener noreferrer" 
-           style="color: var(--accent-pink); text-decoration: none; font-weight: bold;">
-          View my ArtStation profile directly →
-        </a></p>
+      <div class="error" style="text-align: center; padding: 2rem;">
+        <p style="margin-bottom: 1rem;">3D artwork loading is temporarily unavailable in this browser.</p>
+        <a href="https://www.artstation.com/${username}" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           class="contact-btn"
+           style="display: inline-block; margin-top: 1rem;">
+          View Full Portfolio on ArtStation →
+        </a>
       </div>
     `;
   }

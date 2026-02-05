@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Making Things with Epoxy: Dice Crafting - Marta Teivāne</title>
+  <link rel="icon" type="image/jpeg" href="../images/me.JPG" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .blog-post {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .post-card {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 35px;
+      padding: 3rem;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5),
+                  inset 0 2px 0 rgba(255, 255, 255, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .post-header {
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .post-title {
+      font-size: 2.5rem;
+      margin: 0 0 1rem 0;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+    }
+    
+    .post-meta {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.95rem;
+    }
+    
+    .post-content {
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+    
+    .post-content h2 {
+      color: var(--primary-fg);
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+    }
+    
+    .post-content h3 {
+      color: var(--primary-fg);
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+      font-size: 1.4rem;
+    }
+    
+    .post-content p {
+      margin-bottom: 1rem;
+    }
+    
+    .post-content ul, .post-content ol {
+      margin-bottom: 1.5rem;
+      padding-left: 2rem;
+    }
+    
+    .post-content li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .post-image {
+      width: 100%;
+      border-radius: 20px;
+      margin: 2rem 0;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .image-caption {
+      text-align: center;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+    
+    .materials-list, .steps-list {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 1.5rem;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      margin-bottom: 2rem;
+    }
+    
+    .tip-box {
+      background: rgba(100, 200, 255, 0.1);
+      padding: 1.5rem;
+      border-radius: 20px;
+      border: 2px solid rgba(100, 200, 255, 0.3);
+      margin: 2rem 0;
+    }
+    
+    .tip-box h3 {
+      color: var(--accent-cyan);
+      margin-top: 0;
+    }
+    
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .image-grid-item {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .image-grid-item .post-image {
+      margin: 0;
+      flex-grow: 1;
+      object-fit: cover;
+    }
+    
+    .image-grid-item .image-caption {
+      margin-top: 0.5rem;
+    }
+    
+    .back-link {
+      display: inline-block;
+      padding: 0.6rem 1.5rem;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 500;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      margin-top: 2rem;
+    }
+    
+    .back-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+    
+    @media (max-width: 768px) {
+      .post-card {
+        padding: 2rem 1.5rem;
+      }
+      
+      .post-title {
+        font-size: 2rem;
+      }
+      
+      .post-content h2 {
+        font-size: 1.5rem;
+      }
+      
+      .image-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="blog-post">
+    <article class="post-card">
+      <header class="post-header">
+        <h1 class="post-title">Making Things with Epoxy: Dice Crafting</h1>
+        <div class="post-meta">
+          <time datetime="2026-02-05">February 5, 2026</time> • Marta Teivāne
+        </div>
+      </header>
+
+      <div class="post-content">
+        <p>
+          I've been making dice and other things with epoxy resin for a while now, and I wanted to 
+          share what works for me. It's been a journey of experimentation, beautiful successes, and 
+          even more failures.
+        </p>
+
+        <img src="../images/blog/bunch_of_epoxy_stuff.JPG" alt="Epoxy resin workspace" class="post-image">
+        <p class="image-caption">My first ever creations from 2021- flowers encased in resin. Full of bubbles and sadness.</p>
+
+        <h2>My Dice Making Process: What Works for Me</h2>
+        <p>
+          After making many sets of dice, I've developed a process that consistently gives me good results. 
+          I work with a two-part epoxy resin system—mixing resin and hardener. I've found that without a pressure pot and vacuum chamber making
+          dice that can be sold is IMPOSSIBLE. 
+        </p>
+
+        <div class="materials-list">
+          <h3>My Essential Materials</h3>
+          <ul>
+            <li><strong>Epoxy Resin Kit</strong> - I use <a href="https://a.aliexpress.com/_EJkLKaY" target="_blank" style="color: var(--accent-cyan);">this 1:1 crystal-clear resin from AliExpress</a>. It's great quality, doesn't yellow like the resin I bought in Latvia, and it's cheaper than any resin you could find in Latvia.</li>
+            <li><strong>Silicone Molds</strong> - I have <a href="https://a.aliexpress.com/_Ey0OGh2" target="_blank" style="color: var(--accent-cyan);">these from AliExpress</a> but they're not great quality. For good quality dice molds, Etsy is recommended.</li>
+            <li><strong>Digital Scale</strong> - I use a kitchen scale but it isn't very precise</li>
+            <li><strong>Protective Equipment</strong> - Gloves & mask</li>
+            <li><strong>Colorants</strong> - <a href="https://a.aliexpress.com/_EvqJjNw" target="_blank" style="color: var(--accent-cyan);">These transparent resin dyes from AliExpress</a> are pretty and clear, plus glitters and galaxy flakes from hobbyset. I also bought resin dyes from Hobbbyset ut they are opaque.</li>
+            <li><strong>Heat Gun & lighter</strong> - For removing air bubbles</li>
+            <li><strong>Mixing Cups & Sticks</strong> - Silicone or plastic cups, wooden ice cream sticks</li>
+          </ul>
+        </div>
+
+        <div class="tip-box">
+          <h3>💡 What I've Learned</h3>
+          <ul>
+            <li><strong>Avoid moisture:</strong> Humidity can affect your results. Water will ruin everything.</li>
+            <li><strong>Mix thoroughly:</strong> I mix for at least 5 minutes, scraping the sides and bottom</li>
+            <li><strong>Use a heat gun:</strong> After pouring, I use and heat gun or lighter to pop surface bubbles, also heat inbetween mixing. Resin work time is shortened but less bubbles.</li>
+            <li><strong>Patience during curing:</strong> I try to give my dice full 48 hours but I am impatient and do it sooner. Sometimes even 14h which makes the excess resin harder to get off which causes damage to the dice.</li>
+            <li><strong>Posca markers are amazing for coloring the numbers.</strong></li>
+        </ul>
+        </div>
+
+        <h2>Showcasing Some Dice Sets</h2>
+        <p>
+          Here are some of the test dice I've made. You can see opaque colors, translucent colors, glitter, plants, a wasp and some more stuff:
+        </p>
+
+        <img src="../images/blog/random_epoxyresin_dice.JPG" alt="Collection of finished custom dice" class="post-image">
+        <p class="image-caption">Some of my test finished dice.</p>
+
+        <p>
+           Resin is not the only material I use for making dice. I also make dice with polymer clay and air dry clay. Those materials are interesting too:
+        </p>
+
+        <img src="../images/blog/greendice_epoxy.JPG" alt="Green dice set" class="post-image">
+        <p class="image-caption">Green dice set. Stuff used: Galaxy flakes, opaque resin dye. Number coloring: Posca marker PC-1M, Glow in the dark paint.</p>
+
+        <img src="../images/blog/polymerclay_polish.JPG" alt="Polymer dice set" class="post-image">
+        <p class="image-caption">Polymer dice set. Stuff used: Purple and white polymer clay. Number coloring: White nail polish.</p>
+        <p>
+           To make polymer clay dice, I use the same silicone molds as for resin dice. I press the clay into the molds, freeze them for easier removal, then bake according to the clay's instructions. After baking I painted the numbers with nail polish and scraped off the excess with a boxcutter.
+        </p>
+
+        <img src="../images/blog/Airdryclay_epoxy.JPG" alt="Air dry clay dice set" class="post-image">
+        <p class="image-caption">Air dry clay encased in resin set. Stuff used: Broken Air dry clay. Number coloring: Gold poster color.</p>
+        <p>
+           To make air dry clay dice, I press the clay into the molds, let them dry completely, then smash tehm, paint with gold color, glue them back together and encase them in resin for durability and a glossy finish. Number coloring is done with gold poster color. Air dry clay was drying for weeks and still wasnt fully dry.
+        </p>
+
+        <h2>My Creations</h2>
+        <p>
+          Everyone starts somewhere, and looking back at my first attempts is both humbling and encouraging. 
+          My earliest pieces weren't perfect, but they represented the beginning of this creative journey.
+        </p>
+
+        <div class="image-grid">
+          <div class="image-grid-item">
+            <img src="../images/blog/Oldepoxypendant.JPG" alt="Early epoxy pendant" class="post-image">
+            <p class="image-caption">a pendant with a flower and piece of fabric. One of my first epoxy creations. Full of bubbles and the resin is not mixed very well</p>
+          </div>
+          <div class="image-grid-item">
+            <img src="../images/blog/pendantwithplants_epoxy.JPG" alt="Early epoxy pendant" class="post-image">
+            <p class="image-caption">a pendant with a flower, glitter and transparent resin color. No bubbles, great finish. This is more recent with the aliexpress resin.</p>
+          </div>
+          <div class="image-grid-item">
+            <img src="../images/blog/pendantwithplants_NFC.JPG" alt="Early epoxy pendant" class="post-image">
+            <p class="image-caption">a pendant with a flower, glitter and transparent resin color. No bubbles, great finish. This is more recent with the aliexpress resin. Also has a n NFC chip on the back- i keep it on my bag so when people i meet ask for instagram I pull this out and tap it on their phone and it opens my IG</p>
+          </div>
+        </div>
+
+        <p>
+            I get my furniture for pendats and other jewelry making things from <a href="https://https://www.artaco.lv/" target="_blank" style="color: var(--accent-cyan);">Arta&Co</a>
+        </p>
+
+        <h2>The Biggest Failures</h2>
+        <div class="image-grid">
+                      <div class="image-grid-item">
+        <img src="../images/blog/boiled_resin.JPG" alt="Various epoxy creations including failures" class="post-image">
+        <p class="image-caption">Boiled resin- i was holding heat gun too close for too long.</p>
+        </div>
+                      <div class="image-grid-item">
+        <img src="../images/blog/epoxy and water.JPG" alt="Various epoxy creations including failures" class="post-image">
+        <p class="image-caption">Water dripped on top of this one making it white. It dried only after months.</p>
+                      </div>
+                           <div class="image-grid-item">
+        <img src="../images/blog/non_heated_resin.JPG" alt="Various epoxy creations including failures" class="post-image">
+        <p class="image-caption">Resin i didnt heat at all.</p>
+        </div>
+        </div>
+
+        <h2>What I'm Still Learning</h2>
+        <p>
+          Getting into resin is fairly cheap. But once you want to make it more than a hobby it gets expensive- vacuum pots, pressure pots to get rid of all the bubbles is already -500 euros.
+        </p>
+        <p>
+          If you're thinking about trying resin crafting, my advice is simple: start with small projects. They will look pretty and are hard to mess up if you use good resin. Keychains are the easiest and prettiest.
+        </p>
+
+      </div>
+
+      <a href="../blog.html" class="back-link">← Back to Blog</a>
+    </article>
+  </div>
+
+  <script src="../rain.js"></script>
+</body>
+</html>

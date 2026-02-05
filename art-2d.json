@@ -7,7 +7,88 @@
       "dateCreated": "2026-01-06",
       "imagePath": "art-2d/efi.PNG",
       "description": "An illustration of Efi- my DnD squadmates character in an adventure where she kept collecting goopy goop.",
-      "tags": ["digital", "DnD", "character art", "fantasy"]
+      "tags": ["digital", "DnD", "character art", "fantasy", "procreate"]
+    },
+    {
+      "id": 7,
+      "title": "Scythe, god of rot and most potent acids",
+      "medium": "Digital Painting",
+      "dateCreated": "2025-12-15",
+      "imagePath": "art-2d/Scythe_godofrot_dnd.png",
+      "description": "My DnD character Tak's Hexblade Warlock's Scythe, given to her by a deity of rot, decay, and most potent acids.",
+      "tags": ["digital", "DnD", "weapon", "procreate", "ibispaint"]
+    },
+    {
+      "id": 12,
+      "title": "Tak after the blast",
+      "medium": "Digital Painting",
+      "dateCreated": "2025-12-15",
+      "imagePath": "art-2d/tak_after_soulselling.png",
+      "description": "After the big blast Tak created, she came back like this.",
+      "tags": ["digital", "DnD", "character art", "procreate", "ibispaint"]
+    },
+    {
+      "id": 9,
+      "title": "DnD thing- After Tak killed everyone",
+      "medium": "Digital Painting",
+      "dateCreated": "2025-12-01",
+      "imagePath": "art-2d/dnd_lietinja.png",
+      "description": "Yes, I killed everyone in my dnd party. But they survived and so did I. I did have to sell my soul to another gos but... that's DndD",
+      "tags": ["digital", "DnD", "character art", "procreate", "krita"]
+    },
+    {
+      "id": 11,
+      "title": "Mushroom monster painted with mushroom ink",
+      "medium": "Ink",
+      "dateCreated": "2025-11-18",
+      "imagePath": "art-2d/mushroom-ink-art.jpg",
+      "description": "I painted a mushroom monster with mushroom (Coprinus) ink",
+      "tags": ["ink", "Coprinus"]
+    },
+    {
+      "id": 15,
+      "title": "",
+      "medium": "Digital Painting",
+      "dateCreated": "2025-11-17",
+      "imagePath": "art-2d/artfight_betgirl.png",
+      "description": "Attack on Rhiikayy character for Artfight 2025.",
+      "tags": ["digital", "character art", "artfight"]
+    },
+    {
+      "id": 6,
+      "title": "Niandra DnD character",
+      "medium": "Digital Painting",
+      "dateCreated": "2025-10-13",
+      "imagePath": "art-2d/Niandra_dnd.png",
+      "description": "Niandra is a DnD character played by one of my DnD groupmates. He died in a battle with skeletons. RIP Niandra.",
+      "tags": ["digital", "DnD", "character art", "procreate"]
+    },
+    {
+      "id": 8,
+      "title": "Tak",
+      "medium": "Digital Painting",
+      "dateCreated": "2025-09-17",
+      "imagePath": "art-2d/TAK_dnd_char.png",
+      "description": "Tak is my DnD character- a Tiefling Hexblade Warlock. First ever character I made for DnD.",
+      "tags": ["digital", "DnD", "character art", "ibispaint"]
+    },
+    {
+      "id": 4,
+      "title": "Draven puppymaid",
+      "medium": "Digital Painting",
+      "dateCreated": "2025-08-17",
+      "imagePath": "art-2d/Draven_puppymaid.png",
+      "description": "Draven is a musician. He is in a music collective Life gets worse, and similar to xaduma, also joked about maid dresses and femboys. Well... here.",
+      "tags": ["digital", "character art", "meme", "procreate"]
+    },
+    {
+      "id": 14,
+      "title": "Vilkace",
+      "medium": "Digital Painting",
+      "dateCreated": "2025-08-15",
+      "imagePath": "art-2d/vilakce_chara_sheet2.png",
+      "description": "Vilkace is my alter ego persona based on the name i choose in all games- Vilkace.",
+      "tags": ["digital", "character art", "krita","procreate"]
     },
     {
       "id": 2,
@@ -16,7 +97,52 @@
       "dateCreated": "2025-08-12",
       "imagePath": "art-2d/femduma_square.png",
       "description": "Xaduma is a musician. He is in a music collective Life gets worse, and joked about someone drawing him as a catmaid. I was the one to do it.",
-      "tags": ["digital", "character art", "meme"]
+      "tags": ["digital", "character art", "meme", "procreate", "ibispaint", "krita"]
+    },
+    {
+      "id": 5,
+      "title": "Life Gets Worse collective",
+      "medium": "Digital Painting",
+      "dateCreated": "2025-08-02",
+      "imagePath": "art-2d/LGW.png",
+      "description": "A music collective. They hosted a competition so I did artwork for it.",
+      "tags": ["digital", "procreate", "contest"]
+    },
+    {
+      "id": 16,
+      "title": "",
+      "medium": "Digital Painting",
+      "dateCreated": "2025-07-18",
+      "imagePath": "art-2d/artfight_lunipoda.jpg",
+      "description": "Attack on cyberlawliet character Lunipoda for Artfight 2025.",
+      "tags": ["digital", "character art", "artfight"]
+    },
+    {
+      "id": 17,
+      "title": "Popsy",
+      "medium": "Digital Painting",
+      "dateCreated": "2025-07-17",
+      "imagePath": "art-2d/popsy_artfight.jpg",
+      "description": "Attack on ashkins_13 character Popsy for Artfight 2025.",
+      "tags": ["digital", "character art", "artfight"]
+    },
+    {
+      "id": 13,
+      "title": "Techbug",
+      "medium": "Digital Painting",
+      "dateCreated": "2025-06-25",
+      "imagePath": "art-2d/techbug.png",
+      "description": "A sketch for a bug i want to create in 3D.",
+      "tags": ["digital", "character art", "krita"]
+    },
+    {
+      "id": 10,
+      "title": "Elchin and Raganubeka icon",
+      "medium": "Digital Painting",
+      "dateCreated": "2025-02-05",
+      "imagePath": "art-2d/elchinjezus_finala_versija.jpg",
+      "description": "",
+      "tags": ["digital", "meme", "krita"]
     },
     {
       "id": 3,

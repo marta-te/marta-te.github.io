@@ -45,15 +45,7 @@
       "description": "I painted a mushroom monster with mushroom (Coprinus) ink",
       "tags": ["ink", "Coprinus"]
     },
-    {
-      "id": 15,
-      "title": "",
-      "medium": "Digital Painting",
-      "dateCreated": "2025-11-17",
-      "imagePath": "art-2d/artfight_betgirl.png",
-      "description": "Attack on Rhiikayy character for Artfight 2025.",
-      "tags": ["digital", "character art", "artfight"]
-    },
+
     {
       "id": 6,
       "title": "Niandra DnD character",
@@ -107,6 +99,15 @@
       "imagePath": "art-2d/LGW.png",
       "description": "A music collective. They hosted a competition so I did artwork for it.",
       "tags": ["digital", "procreate", "contest"]
+    },
+        {
+      "id": 15,
+      "title": "Artfight attack on Rhiikayy character",
+      "medium": "Digital Painting",
+      "dateCreated": "2025-07-17",
+      "imagePath": "art-2d/artfight_betgirl.png",
+      "description": "Attack on Rhiikayy character for Artfight 2025.",
+      "tags": ["digital", "character art", "artfight"]
     },
     {
       "id": 16,

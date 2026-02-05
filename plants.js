@@ -22,15 +22,46 @@ function renderPlants(plants) {
     return;
   }
   
-  grid.innerHTML = plants.map(plant => `
-    <div class="plant-card" data-id="${plant.id}">
-      <img src="${plant.imagePath}" alt="${plant.commonName}" />
-      <p class="plant-name"><strong>${plant.commonName}</strong></p>
-      <p class="plant-scientific"><em>${plant.scientificName}</em></p>
-      ${plant.dateFound ? `<p class="plant-date">📅 ${formatDate(plant.dateFound)}</p>` : ''}
-      ${plant.location ? `<p class="plant-location">📍 ${plant.location}</p>` : ''}
-    </div>
-  `).join('');
+  grid.innerHTML = plants.map(plant => {
+    const div = document.createElement('div');
+    div.className = 'plant-card';
+    div.dataset.id = String(plant.id);
+    
+    const img = document.createElement('img');
+    img.src = String(plant.imagePath);
+    img.alt = String(plant.commonName);
+    div.appendChild(img);
+    
+    const namePara = document.createElement('p');
+    namePara.className = 'plant-name';
+    const strong = document.createElement('strong');
+    strong.textContent = plant.commonName;
+    namePara.appendChild(strong);
+    div.appendChild(namePara);
+    
+    const scientificPara = document.createElement('p');
+    scientificPara.className = 'plant-scientific';
+    const em = document.createElement('em');
+    em.textContent = plant.scientificName;
+    scientificPara.appendChild(em);
+    div.appendChild(scientificPara);
+    
+    if (plant.dateFound) {
+      const datePara = document.createElement('p');
+      datePara.className = 'plant-date';
+      datePara.textContent = `📅 ${formatDate(plant.dateFound)}`;
+      div.appendChild(datePara);
+    }
+    
+    if (plant.location) {
+      const locPara = document.createElement('p');
+      locPara.className = 'plant-location';
+      locPara.textContent = `📍 ${plant.location}`;
+      div.appendChild(locPara);
+    }
+    
+    return div.outerHTML;
+  }).join('');
 }
 
 function formatDate(dateString) {

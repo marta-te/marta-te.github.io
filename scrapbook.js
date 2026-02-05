@@ -39,24 +39,32 @@ class ScrapbookFilter {
 
   renderFilterControls() {
     const container = document.getElementById('filter-controls');
+    container.innerHTML = '';
     
-    const html = Object.entries(this.filterData).map(([category, values]) => `
-      <div class="filter-box">
-        <h3>${this.capitalize(category)}</h3>
-        <div class="filter-buttons">
-          ${values.map(value => `
-            <button class="filter-btn" 
-                    data-category="${category}" 
-                    data-value="${value}"
-                    onclick="scrapbookFilter.selectFilter('${category}', '${value}')">
-              ${this.capitalize(value)}
-            </button>
-          `).join('')}
-        </div>
-      </div>
-    `).join('');
-    
-    container.innerHTML = html;
+    Object.entries(this.filterData).forEach(([category, values]) => {
+      const filterBox = document.createElement('div');
+      filterBox.className = 'filter-box';
+      
+      const heading = document.createElement('h3');
+      heading.textContent = this.capitalize(category);
+      filterBox.appendChild(heading);
+      
+      const buttonsDiv = document.createElement('div');
+      buttonsDiv.className = 'filter-buttons';
+      
+      values.forEach(value => {
+        const button = document.createElement('button');
+        button.className = 'filter-btn';
+        button.dataset.category = category;
+        button.dataset.value = value;
+        button.textContent = this.capitalize(value);
+        button.addEventListener('click', () => this.selectFilter(category, value));
+        buttonsDiv.appendChild(button);
+      });
+      
+      filterBox.appendChild(buttonsDiv);
+      container.appendChild(filterBox);
+    });
   }
 
   selectFilter(category, value) {
@@ -119,11 +127,17 @@ class ScrapbookFilter {
     
     count.textContent = `Page ${this.currentPageIndex + 1} of ${filteredPages.length}`;
     
-    viewer.innerHTML = `
-      <div class="scrapbook-card" data-page-num="#${page.id}">
-        <img src="${page.imagePath}" alt="Scrapbook page ${page.id}" />
-      </div>
-    `;
+    viewer.innerHTML = '';
+    const card = document.createElement('div');
+    card.className = 'scrapbook-card';
+    card.dataset.pageNum = `#${page.id}`;
+    
+    const img = document.createElement('img');
+    img.src = String(page.imagePath);
+    img.alt = `Scrapbook page ${page.id}`;
+    card.appendChild(img);
+    
+    viewer.appendChild(card);
     
     prevBtn.disabled = this.currentPageIndex === 0;
     nextBtn.disabled = this.currentPageIndex === filteredPages.length - 1;

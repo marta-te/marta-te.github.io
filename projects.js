@@ -22,33 +22,86 @@ function renderProjects(projects) {
     return;
   }
   
-  container.innerHTML = projects.map(project => `
-    <div class="project-card" data-id="${project.id}">
-      <div class="project-banner">
-        <img src="${project.bannerImage}" alt="${project.title}" onerror="this.src='https://via.placeholder.com/400x300/6b5ce7/ffffff?text=${encodeURIComponent(project.title)}'">
-      </div>
-      <div class="project-content">
-        <h2 class="project-title">${project.title}</h2>
-        <p class="project-year">${project.year}</p>
-        ${project.tags && project.tags.length > 0 ? `
-          <div class="project-tags">
-            ${project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
-          </div>
-        ` : ''}
-        <p class="project-description">${project.description}</p>
-        ${project.technologies && project.technologies.length > 0 ? `
-          <div class="project-tech">
-            ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
-          </div>
-        ` : ''}
-        ${project.link && project.link !== '#' ? `
-          <a href="${project.link}" target="_blank" rel="noopener noreferrer" class="project-link">
-            View Project →
-          </a>
-        ` : ''}
-      </div>
-    </div>
-  `).join('');
+  container.innerHTML = projects.map(project => {
+    const card = document.createElement('div');
+    card.className = 'project-card';
+    card.dataset.id = String(project.id);
+    
+    const banner = document.createElement('div');
+    banner.className = 'project-banner';
+    const img = document.createElement('img');
+    img.src = String(project.bannerImage);
+    img.alt = String(project.title);
+    img.onerror = function() {
+      this.src = `https://via.placeholder.com/400x300/6b5ce7/ffffff?text=${encodeURIComponent(project.title)}`;
+    };
+    banner.appendChild(img);
+    card.appendChild(banner);
+    
+    const content = document.createElement('div');
+    content.className = 'project-content';
+    
+    const title = document.createElement('h2');
+    title.className = 'project-title';
+    title.textContent = project.title;
+    content.appendChild(title);
+    
+    const year = document.createElement('p');
+    year.className = 'project-year';
+    year.textContent = project.year;
+    content.appendChild(year);
+    
+    if (project.tags && project.tags.length > 0) {
+      const tagsDiv = document.createElement('div');
+      tagsDiv.className = 'project-tags';
+      project.tags.forEach(tag => {
+        const span = document.createElement('span');
+        span.className = 'project-tag';
+        span.textContent = tag;
+        tagsDiv.appendChild(span);
+      });
+      content.appendChild(tagsDiv);
+    }
+    
+    const desc = document.createElement('p');
+    desc.className = 'project-description';
+    desc.textContent = project.description;
+    content.appendChild(desc);
+    
+    if (project.technologies && project.technologies.length > 0) {
+      const techDiv = document.createElement('div');
+      techDiv.className = 'project-tech';
+      project.technologies.forEach(tech => {
+        const span = document.createElement('span');
+        span.className = 'tech-tag';
+        span.textContent = tech;
+        techDiv.appendChild(span);
+      });
+      content.appendChild(techDiv);
+    }
+    
+    if (project.link && project.link !== '#' && isValidUrl(project.link)) {
+      const link = document.createElement('a');
+      link.href = project.link;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.className = 'project-link';
+      link.textContent = 'View Project →';
+      content.appendChild(link);
+    }
+    
+    card.appendChild(content);
+    return card.outerHTML;
+  }).join('');
+}
+
+function isValidUrl(string) {
+  try {
+    const url = new URL(string);
+    return url.protocol === 'http:' || url.protocol === 'https:';
+  } catch (_) {
+    return false;
+  }
 }
 
 // Load projects when page loads

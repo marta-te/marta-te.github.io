@@ -35,7 +35,6 @@ async function loadArtStation(username) {
     
     for (const proxy of proxies) {
       try {
-        console.log(`Trying proxy: ${proxy.url.split('?')[0]}`);
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 15000);
         
@@ -50,15 +49,12 @@ async function loadArtStation(username) {
           data = proxy.parse(jsonData);
           
           if (data && data.data) {
-            console.log('Successfully loaded data from:', proxy.url.split('?')[0]);
             break;
           } else {
-            console.log('Data format invalid from this proxy, trying next...');
             data = null;
           }
         }
       } catch (e) {
-        console.error(`Proxy ${proxy.url.split('?')[0]} failed:`, e.message);
         lastError = e;
         continue;
       }

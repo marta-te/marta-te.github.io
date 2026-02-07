@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   lightbox.innerHTML = `
     <div class="lightbox-content">
       <img src="" alt="" class="lightbox-image" />
+      <div class="lightbox-copyright">© Marta Teivāne</div>
     </div>
   `;
   document.body.appendChild(lightbox);

@@ -27,10 +27,20 @@ function renderPlants(plants) {
     div.className = 'plant-card';
     div.dataset.id = String(plant.id);
     
+    const imgContainer = document.createElement('div');
+    imgContainer.className = 'plant-image-container';
+    
     const img = document.createElement('img');
     img.src = String(plant.imagePath);
     img.alt = String(plant.commonName);
-    div.appendChild(img);
+    imgContainer.appendChild(img);
+    
+    const copyright = document.createElement('div');
+    copyright.className = 'plant-copyright';
+    copyright.textContent = '© Marta Teivāne';
+    imgContainer.appendChild(copyright);
+    
+    div.appendChild(imgContainer);
     
     const namePara = document.createElement('p');
     namePara.className = 'plant-name';

@@ -60,10 +60,22 @@ function renderGarticArt(posts) {
     script.onload = () => {
       if (window.instgrm) {
         window.instgrm.Embeds.process();
+        // Show embeds after they load
+        setTimeout(() => {
+          document.querySelectorAll('.instagram-wrapper').forEach(wrapper => {
+            wrapper.classList.add('loaded');
+          });
+        }, 1000);
       }
     };
     document.body.appendChild(script);
   } else {
     window.instgrm.Embeds.process();
+    // Show embeds after they load
+    setTimeout(() => {
+      document.querySelectorAll('.instagram-wrapper').forEach(wrapper => {
+        wrapper.classList.add('loaded');
+      });
+    }, 1000);
   }
 }

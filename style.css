@@ -459,8 +459,6 @@ footer {
 .art-card img {
   max-width: 100%;
   height: auto;
-  max-height: 400px;
-  object-fit: cover;
   border-radius: 25px;
   margin-bottom: 0.5rem;
   box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
@@ -539,6 +537,43 @@ footer {
   border: 2px solid rgba(255, 255, 255, 0.2);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   cursor: pointer;
+  display: block;
+  width: 100%;
+}
+
+.plant-image-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.plant-copyright {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 0.55rem;
+  font-weight: 500;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.1);
+  padding: 2px 6px;
+  border-radius: 3px;
+  backdrop-filter: blur(2px);
+}
+
+.plant-card img::after {
+  content: '© Marta Teivāne';
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+  z-index: 2;
 }
 
 .plant-card img:hover {
@@ -663,8 +698,6 @@ footer {
 .card img {
   width: 100%;
   height: auto;
-  max-height: 600px;
-  object-fit: cover;
   display: block;
   border-radius: 30px 30px 0 0;
   position: relative;
@@ -1240,6 +1273,22 @@ footer {
   cursor: default;
 }
 
+.lightbox-copyright {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.15);
+  padding: 4px 8px;
+  border-radius: 4px;
+  backdrop-filter: blur(3px);
+}
+
 @keyframes zoomIn {
   from {
     transform: scale(0.8);
@@ -1308,6 +1357,22 @@ footer {
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5),
               inset 0 2px 0 rgba(255, 255, 255, 0.2);
   overflow: hidden;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.instagram-wrapper:not(.loaded) .instagram-media {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.instagram-wrapper.loaded .instagram-media {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease;
 }
 
 .gartic-card .instagram-media {

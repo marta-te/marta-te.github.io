@@ -19,6 +19,196 @@
       "location": "Kaltenes kalvas",
       "notes": "poisonous",
       "tags": ["pink", "spring", "shrub"]
+    },
+    {
+      "id": 3,
+      "commonName": "Greater Knapweed",
+      "scientificName": "Centaurea scabiosa",
+      "imagePath": "plants/greater_knapweed.JPG",
+      "dateFound": "2023-07-12",
+      "location": "Mazjumpravas Muiža",
+      "notes": "",
+      "tags": ["purple", "summer", "wildflower"]
+    },
+    {
+      "id": 4,
+      "commonName": "Rose",
+      "scientificName": "Rosa sp.",
+      "imagePath": "plants/Augstkalne_10_19-07-2024.JPG",
+      "dateFound": "2024-07-19",
+      "location": "Augstkalne",
+      "notes": "",
+      "tags": []
+    },
+    {
+      "id": 5,
+      "commonName": "Wild carrot and a snail",
+      "scientificName": "Daucus carota",
+      "imagePath": "plants/Augstkalne_16_19-07-2024.JPG",
+      "dateFound": "2024-07-19",
+      "location": "Augstkalne",
+      "notes": "",
+      "tags": []
+    },
+    {
+      "id": 6,
+      "commonName": "great mullein",
+      "scientificName": "Verbascum thapsus",
+      "imagePath": "plants/Igaunija_159_2024_05.JPG",
+      "dateFound": "2024-05-01",
+      "location": "Igaunija",
+      "notes": "",
+      "tags": []
+    },
+    {
+      "id": 7,
+      "commonName": "Divaricate phacelia",
+      "scientificName": "Phacelia divaricata ",
+      "imagePath": "plants/Igaunija_67_2024_05.JPG",
+      "dateFound": "2024-05-01",
+      "location": "Igaunija",
+      "notes": "",
+      "tags": []
+    },
+    {
+      "id": 8,
+      "commonName": "Unidentified plant",
+      "scientificName": "",
+      "imagePath": "plants/Igaunija_8_2024_05.JPG",
+      "dateFound": "2024-05-01",
+      "location": "Igaunija",
+      "notes": "",
+      "tags": []
+    },
+    {
+      "id": 9,
+      "commonName": "Unidentified plant",
+      "scientificName": "",
+      "imagePath": "plants/Jelgava66.JPG",
+      "dateFound": "",
+      "location": "Jelgava",
+      "notes": "",
+      "tags": []
+    },
+    {
+      "id": 10,
+      "commonName": "White rose",
+      "scientificName": "Rosa sp.",
+      "imagePath": "plants/Kemeri7_parastais.JPG",
+      "dateFound": "2023-07-13",
+      "location": "Ķemeri",
+      "notes": "",
+      "tags": []
+    },
+    {
+      "id": 11,
+      "commonName": "Witches' cauldron",
+      "scientificName": "",
+      "imagePath": "plants/Kurzeme-24.jpg",
+      "dateFound": "2024-04-01",
+      "location": "Kaltenes kalvas",
+      "notes": "",
+      "tags": []
+    },
+    {
+      "id": 12,
+      "commonName": "Unidentified plant",
+      "scientificName": "",
+      "imagePath": "plants/Kurzeme-10.jpg",
+      "dateFound": "",
+      "location": "Kurzeme",
+      "notes": "",
+      "tags": []
+    },
+    {
+      "id": 13,
+      "commonName": "Shrubby Cinquefoil",
+      "scientificName": "Pentaphylloides fruticosa",
+      "imagePath": "plants/Smilsakmens89.JPG",
+      "dateFound": "",
+      "location": "N/A",
+      "notes": "",
+      "tags": []
+    },
+    {
+      "id": 14,
+      "commonName": "Hawkweed",
+      "scientificName": "Hieracium sp.",
+      "imagePath": "plants/Tetabilde1.JPG",
+      "dateFound": "2024-07-29",
+      "location": "Ventspils mols",
+      "notes": "",
+      "tags": []
+    },
+    {
+      "id": 15,
+      "commonName": "Unidentified plant",
+      "scientificName": "",
+      "imagePath": "plants/ala11.JPG",
+      "dateFound": "",
+      "location": "N/A",
+      "notes": "",
+      "tags": []
+    },
+    {
+      "id": 16,
+      "commonName": "Unidentified plant",
+      "scientificName": "",
+      "imagePath": "plants/ala7.JPG",
+      "dateFound": "",
+      "location": "N/A",
+      "notes": "",
+      "tags": []
+    },
+    {
+      "id": 17,
+      "commonName": "Unidentified plant",
+      "scientificName": "",
+      "imagePath": "plants/sigulda_stump.JPG",
+      "dateFound": "",
+      "location": "Sigulda",
+      "notes": "",
+      "tags": []
+    },
+    {
+      "id": 18,
+      "commonName": "Phlox",
+      "scientificName": "Phlox paniculata",
+      "imagePath": "plants/ventspils-130-2024.JPG",
+      "dateFound": "2024-07-29",
+      "location": "Ventspils",
+      "notes": "",
+      "tags": []
+    },
+    {
+      "id": 19,
+      "commonName": "Globe thistle",
+      "scientificName": "Echinops ritro",
+      "imagePath": "plants/ventspils-144-2024.JPG",
+      "dateFound": "2024-07-29",
+      "location": "Ventspils",
+      "notes": "",
+      "tags": []
+    },
+    {
+      "id": 20,
+      "commonName": "Unidentified plant",
+      "scientificName": "",
+      "imagePath": "plants/ventspils-152-2024.JPG",
+      "dateFound": "2024-07-29",
+      "location": "Ventspils",
+      "notes": "",
+      "tags": []
+    },
+    {
+      "id": 21,
+      "commonName": "Dog rose",
+      "scientificName": "Rosa canina",
+      "imagePath": "plants/ventspils-98-2024.JPG",
+      "dateFound": "2024-07-29",
+      "location": "Ventspils",
+      "notes": "",
+      "tags": []
     }
   ]
 }

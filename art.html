@@ -45,6 +45,7 @@
     <div class="tabs">
       <button class="tab-button active" data-tab="3d" onclick="switchTab('3d')">3D Art</button>
       <button class="tab-button" data-tab="2d" onclick="switchTab('2d')">2D Art</button>
+      <button class="tab-button" data-tab="gartic" onclick="switchTab('gartic')">Gartic</button>
     </div>
 
     <div id="tab-3d" class="tab-content active">
@@ -56,6 +57,17 @@
     <div id="tab-2d" class="tab-content">
       <div id="art-2d-gallery">
         <p class="loading">Loading 2D artwork...</p>
+      </div>
+    </div>
+
+    <div id="tab-gartic" class="tab-content">
+      <p class="gartic-intro">
+        <a href="https://gartic.now/" target="_blank" rel="noopener noreferrer">GarticNow</a> and 
+        <a href="https://garticphone.com/" target="_blank" rel="noopener noreferrer">Gartic Phone</a> 
+        are drawing games with limited tools. I enjoy them because they let me not overthink the art process and just draw like we did in our computer classes in primary.
+      </p>
+      <div id="gartic-gallery">
+        <p class="loading">Loading Gartic Phone art...</p>
       </div>
     </div>
   </main>
@@ -77,6 +89,14 @@
         content.classList.remove('active');
       });
       document.getElementById(`tab-${tabName}`).classList.add('active');
+      
+      // Load Gartic art when tab is clicked
+      if (tabName === 'gartic') {
+        const gallery = document.getElementById('gartic-gallery');
+        if (gallery && gallery.querySelector('.loading')) {
+          loadGarticArt();
+        }
+      }
     }
     
     // Load 3D art on page load
@@ -91,6 +111,7 @@
     });
   </script>
   <script src="art-2d.js"></script>
+  <script src="gartic.js"></script>
   <script src="lightbox.js"></script>
   <script>
     // Mobile navigation toggle

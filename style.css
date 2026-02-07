@@ -428,11 +428,10 @@ footer {
 }
 
 .plant-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
+  column-count: 4;
+  column-gap: 2rem;
   margin-top: 2rem;
+  padding: 0 1rem;
 }
 
 .plant-card {
@@ -441,17 +440,20 @@ footer {
   -webkit-backdrop-filter: blur(20px);
   padding: 1.5rem;
   border-radius: 35px;
-  width: 200px;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5),
               inset 0 2px 0 rgba(255, 255, 255, 0.2);
   border: 2px solid rgba(255, 255, 255, 0.3);
   transition: all 0.3s ease;
   position: relative;
+  break-inside: avoid;
+  margin-bottom: 2rem;
+  display: inline-block;
+  width: 100%;
 }
 
 /* Art cards - wider than plant cards */
 .art-card {
-  width: 300px;
+  padding: 1.5rem;
 }
 
 .art-card img {
@@ -1249,6 +1251,78 @@ footer {
   }
 }
 
+/* Gartic Phone gallery - masonry layout */
+.gartic-intro {
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.95);
+  max-width: 800px;
+  margin: 2rem auto 1rem;
+  padding: 0 2rem;
+}
+
+.gartic-intro a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.gartic-intro a:hover {
+  color: var(--accent-pink);
+  text-decoration: underline;
+}
+
+.gartic-grid {
+  column-count: 4;
+  column-gap: 1rem;
+  margin-top: 2rem;
+  padding: 0 1rem;
+}
+
+.gartic-card {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+  width: 100%;
+}
+
+.gartic-card:hover {
+  transform: translateY(-5px);
+}
+
+.gartic-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5),
+              inset 0 2px 0 rgba(255, 255, 255, 0.2);
+}
+
+.instagram-wrapper {
+  border-radius: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5),
+              inset 0 2px 0 rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+}
+
+.gartic-card .instagram-media {
+  margin: 0 !important;
+  max-width: 100% !important;
+  min-width: unset !important;
+}
+
+.gartic-description {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 0 0.25rem;
+}
+
 /* Mobile responsive for plants */
 @media (max-width: 768px) {
   #rain-canvas {
@@ -1260,18 +1334,22 @@ footer {
   }
   
   .plant-grid {
-    gap: 1rem;
+    column-count: 2;
+    column-gap: 1rem;
     padding: 0;
   }
   
   .plant-card {
-    width: calc(50% - 0.5rem);
-    min-width: 150px;
+    margin-bottom: 1rem;
     padding: 1rem;
   }
   
-  .art-card {
-    width: calc(100% - 1rem);
-    max-width: 400px;
+  .gartic-grid {
+    column-count: 2;
+    column-gap: 0.75rem;
+  }
+  
+  .gartic-card {
+    margin-bottom: 0.75rem;
   }
 }

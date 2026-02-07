@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://marta-te.github.io/sitemap.xml
+
+# Crawl delay (polite to servers)
+Crawl-delay: 1

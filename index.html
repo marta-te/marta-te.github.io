@@ -4,6 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Marta Teivāne - Portfolio</title>
+  <meta name="description" content="Marta Teivāne's portfolio - Digital artist, game developer, and creative technologist. Explore my DnD character art, epoxy dice crafting, coding projects, and more." />
+  <meta name="keywords" content="Marta Teivāne, digital art, game development, DnD art, character art, epoxy dice, web development, portfolio" />
+  <meta name="author" content="Marta Teivāne" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://marta-te.github.io/" />
+  <meta property="og:title" content="Marta Teivāne - Portfolio" />
+  <meta property="og:description" content="Digital artist, game developer, and creative technologist. Explore my DnD character art, epoxy dice crafting, coding projects, and more." />
+  <meta property="og:image" content="https://marta-te.github.io/images/me.JPG" />
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://marta-te.github.io/" />
+  <meta property="twitter:title" content="Marta Teivāne - Portfolio" />
+  <meta property="twitter:description" content="Digital artist, game developer, and creative technologist. Explore my DnD character art, epoxy dice crafting, coding projects, and more." />
+  <meta property="twitter:image" content="https://marta-te.github.io/images/me.JPG" />
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://marta-te.github.io/" />
+  
   <link rel="icon" type="image/jpeg" href="images/me.JPG" />
   <link rel="stylesheet" href="style.css" />
   <style>
@@ -259,10 +280,33 @@
       }
     }
   </style>
+  
+  <!-- Structured Data (Schema.org) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Marta Teivāne",
+    "url": "https://marta-te.github.io/",
+    "image": "https://marta-te.github.io/images/me.JPG",
+    "jobTitle": "Digital Artist & Game Developer",
+    "description": "Digital artist, game developer, and creative technologist specializing in DnD character art, epoxy dice crafting, and web development.",
+    "sameAs": [
+      "https://github.com/marta-te",
+      "https://www.linkedin.com/in/marta-teiv%C4%81ne-37b8b4253/",
+      "https://www.instagram.com/vilkace_/",
+      "https://artfight.net/~Vilkace"
+    ],
+    "knowsAbout": ["Digital Art", "Game Development", "DnD", "Character Design", "Epoxy Crafting", "Web Development"]
+  }
+  </script>
 </head>
 <body>
   <nav>
-    <ul>
+    <button class="nav-toggle" aria-label="Toggle navigation">
+      <span class="hamburger"></span>
+    </button>
+    <ul class="nav-menu">
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="projects.html">Projects</a></li>
       <li><a href="art.html">Art</a></li>
@@ -383,5 +427,28 @@
   
   <canvas id="rain-canvas"></canvas>
   <script src="rain.js"></script>
+  <script>
+    // Mobile navigation toggle
+    document.addEventListener('DOMContentLoaded', function() {
+      const navToggle = document.querySelector('.nav-toggle');
+      const navMenu = document.querySelector('.nav-menu');
+      
+      if (navToggle) {
+        navToggle.addEventListener('click', function() {
+          navToggle.classList.toggle('active');
+          navMenu.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+          link.addEventListener('click', function() {
+            navToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+          });
+        });
+      }
+    });
+  </script>
 </body>
 </html>

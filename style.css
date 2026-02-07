@@ -53,6 +53,52 @@ body::before {
 }
 
 /* Navigation */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 1rem;
+  z-index: 101;
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: var(--accent-cyan);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+}
+
+.hamburger::before {
+  transform: translateY(-8px);
+}
+
+.hamburger::after {
+  transform: translateY(8px);
+}
+
+.nav-toggle.active .hamburger {
+  background: transparent;
+}
+
+.nav-toggle.active .hamburger::before {
+  transform: rotate(45deg);
+}
+
+.nav-toggle.active .hamburger::after {
+  transform: rotate(-45deg);
+}
+
 nav {
   background: rgba(26, 15, 61, 0.8);
   backdrop-filter: blur(20px);
@@ -90,7 +136,7 @@ nav::before {
   opacity: 0.5;
 }
 
-nav ul {
+.nav-menu {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -921,9 +967,39 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  nav ul {
+  .nav-toggle {
+    display: block;
+    position: relative;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0.5rem 1rem;
+  }
+  
+  .nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
     flex-direction: column;
     gap: 0;
+    background: rgba(26, 15, 61, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  }
+  
+  .nav-menu.active {
+    max-height: 500px;
+  }
+  
+  nav li {
+    width: 100%;
   }
   
   nav a {

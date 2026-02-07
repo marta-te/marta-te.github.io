@@ -3,11 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Art Gallery - Marta Teivāne</title>  <link rel="icon" type="image/jpeg" href="images/me.JPG" />  <link rel="stylesheet" href="style.css" />
+  <title>Art Gallery - Marta Teivāne</title>
+  <meta name="description" content="Browse Marta Teivāne's digital art gallery featuring DnD character illustrations, fantasy art, and creative digital paintings made with Procreate, Krita, and IbisPaintX." />
+  <meta name="keywords" content="Marta Teivāne, digital art, DnD art, character illustrations, fantasy art, Procreate, Krita, IbisPaintX" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://marta-te.github.io/art.html" />
+  <meta property="og:title" content="Art Gallery - Marta Teivāne" />
+  <meta property="og:description" content="Browse Marta Teivāne's digital art gallery featuring DnD character illustrations, fantasy art, and creative digital paintings." />
+  <meta property="og:image" content="https://marta-te.github.io/images/me.JPG" />
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://marta-te.github.io/art.html" />
+  <meta property="twitter:title" content="Art Gallery - Marta Teivāne" />
+  <meta property="twitter:description" content="Browse Marta Teivāne's digital art gallery featuring DnD character illustrations, fantasy art, and creative digital paintings." />
+  <meta property="twitter:image" content="https://marta-te.github.io/images/me.JPG" />
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://marta-te.github.io/art.html" />
+  
+  <link rel="icon" type="image/jpeg" href="images/me.JPG" />  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <nav>
-    <ul>
+    <button class="nav-toggle" aria-label="Toggle navigation">
+      <span class="hamburger"></span>
+    </button>
+    <ul class="nav-menu">
       <li><a href="index.html">Home</a></li>
       <li><a href="projects.html">Projects</a></li>
       <li><a href="art.html" class="active">Art</a></li>
@@ -68,5 +92,28 @@
   </script>
   <script src="art-2d.js"></script>
   <script src="lightbox.js"></script>
+  <script>
+    // Mobile navigation toggle
+    document.addEventListener('DOMContentLoaded', function() {
+      const navToggle = document.querySelector('.nav-toggle');
+      const navMenu = document.querySelector('.nav-menu');
+      
+      if (navToggle) {
+        navToggle.addEventListener('click', function() {
+          navToggle.classList.toggle('active');
+          navMenu.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+          link.addEventListener('click', function() {
+            navToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+          });
+        });
+      }
+    });
+  </script>
 </body>
 </html>

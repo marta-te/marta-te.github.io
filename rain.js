@@ -18,9 +18,8 @@ if (canvas && !isMobile) {
   // Create colorful raindrops
   for (let i = 0; i < numDrops; i++) {
     const colors = [
-      'rgba(255, 20, 147, 0.6)',   // Hot pink
-      'rgba(107, 92, 231, 0.6)',   // Purple
-      'rgba(0, 212, 255, 0.6)',    // Cyan
+      'rgba(139, 92, 246, 0.7)',   // Purple
+      'rgba(167, 139, 250, 0.6)',  // Light purple
       'rgba(255, 255, 255, 0.4)'   // White
     ];
     

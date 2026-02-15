@@ -1,12 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+
 :root {
-  --primary-bg: #1a0f3d;
-  --secondary-bg: #2d1b69;
+  --primary-bg: #0a0a0a;
+  --secondary-bg: #1a1a2e;
   --primary-fg: #ffffff;
-  --accent-purple: #6b5ce7;
-  --accent-pink: #ff1493;
-  --accent-cyan: #00d4ff;
-  --glass-bg: rgba(255, 255, 255, 0.1);
-  --glass-border: rgba(255, 255, 255, 0.2);
+  --accent-purple: #8b5cf6;
+  --accent-light-purple: #a78bfa;
+  --accent-black: #0f0f0f;
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(139, 92, 246, 0.3);
+  --title-font: 'Audiowide', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 * {
@@ -26,7 +29,7 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #1a0f3d 0%, #2d1b69 50%, #4a2c8f 100%);
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #2d1a4a 100%);
   background-attachment: fixed;
   color: var(--primary-fg);
   display: flex;
@@ -37,6 +40,17 @@ body {
   overflow-x: hidden;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.hero-title {
+  font-family: var(--title-font);
+  letter-spacing: 0.02em;
+}
+
 body::before {
   content: '';
   position: fixed;
@@ -45,9 +59,9 @@ body::before {
   width: 100%;
   height: 100%;
   background: 
-    radial-gradient(circle at 20% 50%, rgba(255, 20, 147, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
     radial-gradient(circle at 80% 80%, rgba(107, 92, 231, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 40% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 50%);
+    radial-gradient(circle at 40% 20%, rgba(167, 139, 250, 0.1) 0%, transparent 50%);
   pointer-events: none;
   z-index: 0;
 }
@@ -68,7 +82,7 @@ body::before {
   display: block;
   width: 25px;
   height: 3px;
-  background: var(--accent-cyan);
+  background: var(--accent-purple);
   border-radius: 3px;
   transition: all 0.3s ease;
 }
@@ -100,17 +114,17 @@ body::before {
 }
 
 nav {
-  background: rgba(26, 15, 61, 0.8);
+  background: rgba(10, 10, 10, 0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   width: 100%;
   padding: 0;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5),
-              0 0 0 2px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.8),
+              0 0 0 2px rgba(139, 92, 246, 0.3);
   position: sticky;
   top: 0;
   z-index: 100;
-  border-bottom: 3px solid rgba(255, 20, 147, 0.3);
+  border-bottom: 3px solid rgba(139, 92, 246, 0.4);
   background-clip: padding-box;
 }
 
@@ -124,10 +138,10 @@ nav::before {
   border-radius: inherit;
   padding: 2px;
   background: linear-gradient(90deg, 
-    var(--accent-pink), 
     var(--accent-purple), 
-    var(--accent-cyan),
-    var(--accent-pink));
+    var(--accent-light-purple), 
+    var(--accent-purple),
+    var(--accent-purple));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -174,7 +188,7 @@ nav a::before {
   height: 100%;
   background: linear-gradient(90deg, 
     transparent, 
-    rgba(255, 20, 147, 0.3),
+    rgba(139, 92, 246, 0.4),
     transparent);
   transition: left 0.5s ease;
 }
@@ -186,25 +200,25 @@ nav a:hover::before {
 nav a:hover,
 nav a.active {
   background: linear-gradient(135deg, 
-    rgba(255, 20, 147, 0.2), 
+    rgba(139, 92, 246, 0.2), 
     rgba(107, 92, 231, 0.2));
-  color: var(--accent-pink);
-  text-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
+  color: var(--accent-purple);
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
 }
 
 /* Header */
 header {
   background: linear-gradient(135deg, 
-    rgba(107, 92, 231, 0.5), 
-    rgba(255, 20, 147, 0.5));
+    rgba(10, 10, 10, 0.8), 
+    rgba(26, 19, 46, 0.8));
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   color: var(--primary-fg);
   width: 100%;
   padding: 2rem 1rem;
   text-align: center;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
-  border-bottom: 3px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.7), 0 0 20px rgba(139, 92, 246, 0.2);
+  border-bottom: 3px solid rgba(139, 92, 246, 0.3);
   position: relative;
   z-index: 1;
 }
@@ -212,13 +226,13 @@ header {
 header h1 {
   margin: 0;
   font-size: 2.5rem;
-  background: linear-gradient(135deg, #fff, var(--accent-pink), var(--accent-cyan));
+  background: linear-gradient(135deg, #fff, var(--accent-purple), var(--accent-light-purple));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: shimmer 3s infinite;
   font-weight: 700;
-  text-shadow: 0 0 30px rgba(255, 20, 147, 0.3);
+  text-shadow: 0 0 30px rgba(139, 92, 246, 0.6);
 }
 
 @keyframes shimmer {
@@ -240,7 +254,7 @@ main.main {
 }
 
 .content-box {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(10, 10, 10, 0.8);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
   color: var(--primary-fg);
@@ -248,15 +262,16 @@ main.main {
   border-radius: 40px;
   max-width: 600px;
   width: 90%;
-  box-shadow: 0 12px 50px rgba(0, 0, 0, 0.6),
-              inset 0 2px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: 0 12px 50px rgba(0, 0, 0, 0.8),
+              inset 0 2px 0 rgba(139, 92, 246, 0.2),
+              0 0 30px rgba(139, 92, 246, 0.15);
   text-align: center;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(139, 92, 246, 0.4);
   position: relative;
 }
 
@@ -268,10 +283,10 @@ main.main {
   right: -3px;
   bottom: -3px;
   background: linear-gradient(45deg, 
-    var(--accent-pink), 
+    var(--accent-purple), 
     var(--accent-purple),
-    var(--accent-cyan),
-    var(--accent-pink));
+    var(--accent-light-purple),
+    var(--accent-purple));
   border-radius: 40px;
   z-index: -1;
   opacity: 0.8;
@@ -286,27 +301,27 @@ main.main {
 
 /* Links */
 a {
-  color: var(--accent-pink);
+  color: var(--accent-purple);
   text-decoration: none;
   transition: all 0.3s ease;
   position: relative;
 }
 
 a:hover {
-  color: var(--accent-cyan);
-  text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+  color: var(--accent-light-purple);
+  text-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
 }
 
 .button-link {
   text-decoration: none;
-  background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+  background: linear-gradient(135deg, rgba(10, 10, 10, 0.9), rgba(26, 19, 46, 0.9));
   color: white;
   padding: 0.8rem 1.5rem;
   border-radius: 35px;
   display: inline-block;
   margin-top: 1rem;
-  box-shadow: 0 6px 25px rgba(255, 20, 147, 0.6);
-  border: 2px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 6px 25px rgba(139, 92, 246, 0.5), inset 0 0 15px rgba(139, 92, 246, 0.1);
+  border: 2px solid var(--accent-purple);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -332,14 +347,15 @@ a:hover {
 
 .button-link:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 20, 147, 0.6);
+  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.8), inset 0 0 20px rgba(139, 92, 246, 0.2);
   color: white;
+  border-color: var(--accent-light-purple);
 }
 
 /* Button */
 button {
-  background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
-  border: 2px solid rgba(255, 255, 255, 0.4);
+  background: linear-gradient(135deg, rgba(10, 10, 10, 0.9), rgba(26, 19, 46, 0.9));
+  border: 2px solid var(--accent-purple);
   color: white;
   padding: 0.8rem 1.5rem;
   border-radius: 35px;
@@ -373,7 +389,7 @@ button:hover::before {
 
 button:hover {
   transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 6px 25px rgba(255, 20, 147, 0.6);
+  box-shadow: 0 6px 25px rgba(139, 92, 246, 0.6);
 }
 
 button:active {
@@ -435,14 +451,15 @@ footer {
 }
 
 .plant-card {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(10, 10, 10, 0.7);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   padding: 1.5rem;
   border-radius: 35px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5),
-              inset 0 2px 0 rgba(255, 255, 255, 0.2);
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7),
+              inset 0 2px 0 rgba(139, 92, 246, 0.15),
+              0 0 20px rgba(139, 92, 246, 0.1);
+  border: 2px solid rgba(139, 92, 246, 0.3);
   transition: all 0.3s ease;
   position: relative;
   break-inside: avoid;
@@ -469,9 +486,9 @@ footer {
 
 .art-card img:hover {
   transform: scale(1.15);
-  box-shadow: 0 15px 50px rgba(255, 20, 147, 0.6),
+  box-shadow: 0 15px 50px rgba(139, 92, 246, 0.6),
               0 0 40px rgba(107, 92, 231, 0.5);
-  border-color: rgba(255, 20, 147, 0.6);
+  border-color: rgba(139, 92, 246, 0.6);
   z-index: 10;
   position: relative;
 }
@@ -510,9 +527,9 @@ footer {
   right: -1px;
   bottom: -1px;
   background: linear-gradient(135deg, 
-    var(--accent-pink),
     var(--accent-purple),
-    var(--accent-cyan));
+    var(--accent-purple),
+    var(--accent-light-purple));
   border-radius: 20px;
   opacity: 0;
   z-index: -1;
@@ -525,7 +542,7 @@ footer {
 
 .plant-card:hover {
   transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 12px 40px rgba(255, 20, 147, 0.4);
+  box-shadow: 0 12px 40px rgba(139, 92, 246, 0.4);
 }
 
 .plant-card img {
@@ -578,9 +595,9 @@ footer {
 
 .plant-card img:hover {
   transform: scale(1.15);
-  box-shadow: 0 15px 50px rgba(255, 20, 147, 0.6),
+  box-shadow: 0 15px 50px rgba(139, 92, 246, 0.6),
               0 0 40px rgba(107, 92, 231, 0.5);
-  border-color: rgba(255, 20, 147, 0.6);
+  border-color: rgba(139, 92, 246, 0.6);
   z-index: 10;
   position: relative;
 }
@@ -589,7 +606,7 @@ footer {
   display: inline-block;
   margin-top: 2rem;
   padding: 0.8rem 2rem;
-  background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-purple));
   color: white;
   border-radius: 35px;
   text-decoration: none;
@@ -601,7 +618,7 @@ footer {
 
 .back-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(255, 20, 147, 0.6);
+  box-shadow: 0 6px 25px rgba(139, 92, 246, 0.6);
   color: white;
 }
 
@@ -626,7 +643,7 @@ footer {
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 2rem;
-  background: linear-gradient(135deg, #fff, var(--accent-pink), var(--accent-cyan));
+  background: linear-gradient(135deg, #fff, var(--accent-purple), var(--accent-light-purple));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -677,7 +694,7 @@ footer {
   right: 0;
   bottom: 0;
   background: linear-gradient(135deg, 
-    rgba(255, 20, 147, 0.1),
+    rgba(139, 92, 246, 0.1),
     rgba(107, 92, 231, 0.1));
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -690,9 +707,9 @@ footer {
 
 .card:hover {
   transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 15px 50px rgba(255, 20, 147, 0.4),
+  box-shadow: 0 15px 50px rgba(139, 92, 246, 0.4),
               0 0 30px rgba(107, 92, 231, 0.3);
-  border-color: rgba(255, 20, 147, 0.5);
+  border-color: rgba(139, 92, 246, 0.5);
 }
 
 .card img {
@@ -767,14 +784,14 @@ footer {
 
 .tab-button:hover {
   background: rgba(255, 255, 255, 0.12);
-  border-color: var(--accent-pink);
-  box-shadow: 0 4px 20px rgba(255, 20, 147, 0.3);
+  border-color: var(--accent-purple);
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
 }
 
 .tab-button.active {
-  background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
-  border-color: var(--accent-pink);
-  box-shadow: 0 4px 20px rgba(255, 20, 147, 0.5);
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-purple));
+  border-color: var(--accent-purple);
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.5);
   transform: scale(1.05);
 }
 
@@ -845,7 +862,7 @@ footer {
   color: var(--primary-fg);
   font-size: 1.2rem;
   margin: 0 0 1rem 0;
-  background: linear-gradient(135deg, var(--accent-pink), var(--accent-cyan));
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-purple));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -880,7 +897,7 @@ footer {
   width: 0;
   height: 0;
   border-radius: 50%;
-  background: rgba(255, 20, 147, 0.3);
+  background: rgba(139, 92, 246, 0.3);
   transform: translate(-50%, -50%);
   transition: width 0.3s, height 0.3s;
 }
@@ -891,16 +908,16 @@ footer {
 }
 
 .filter-btn:hover {
-  border-color: var(--accent-pink);
-  box-shadow: 0 4px 15px rgba(255, 20, 147, 0.3);
+  border-color: var(--accent-purple);
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
   transform: translateY(-2px);
 }
 
 .filter-btn.active {
-  background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-purple));
   color: white;
-  border-color: var(--accent-pink);
-  box-shadow: 0 4px 20px rgba(255, 20, 147, 0.5);
+  border-color: var(--accent-purple);
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.5);
   transform: scale(1.05);
 }
 
@@ -957,7 +974,7 @@ footer {
 .clear-filters {
   display: block;
   margin: 1rem auto;
-  background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-purple));
   color: white;
   border: 2px solid rgba(255, 255, 255, 0.4);
   padding: 0.8rem 2rem;
@@ -970,7 +987,7 @@ footer {
 
 .clear-filters:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(255, 20, 147, 0.6);
+  box-shadow: 0 6px 25px rgba(139, 92, 246, 0.6);
 }
 
 /* Loading State */
@@ -990,14 +1007,14 @@ footer {
 .error {
   text-align: center;
   padding: 2rem;
-  color: var(--accent-pink);
-  background: rgba(255, 20, 147, 0.15);
+  color: var(--accent-purple);
+  background: rgba(139, 92, 246, 0.15);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  border: 2px solid rgba(255, 20, 147, 0.5);
+  border: 2px solid rgba(139, 92, 246, 0.5);
   border-radius: 35px;
   margin: 2rem 0;
-  box-shadow: 0 8px 30px rgba(255, 20, 147, 0.3);
+  box-shadow: 0 8px 30px rgba(139, 92, 246, 0.3);
 }
 
 /* Responsive Design */
@@ -1072,14 +1089,14 @@ footer {
   position: relative;
   border: 2px solid transparent;
   background: linear-gradient(var(--primary-bg), var(--primary-bg)) padding-box,
-              linear-gradient(45deg, var(--accent-pink), var(--accent-purple), var(--accent-cyan)) border-box;
+              linear-gradient(45deg, var(--accent-purple), var(--accent-purple), var(--accent-purple)) border-box;
 }
 
 /* Glowing text effect */
 .glow-text {
-  text-shadow: 0 0 10px rgba(255, 20, 147, 0.5),
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.5),
                0 0 20px rgba(107, 92, 231, 0.3),
-               0 0 30px rgba(0, 212, 255, 0.2);
+               0 0 30px rgba(167, 139, 250, 0.2);
 }
 
 /* Interactive hover glow */
@@ -1088,7 +1105,7 @@ footer {
 }
 
 .interactive-glow:hover {
-  box-shadow: 0 0 20px rgba(255, 20, 147, 0.6),
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.6),
               0 0 40px rgba(107, 92, 231, 0.4),
               inset 0 0 20px rgba(255, 255, 255, 0.1);
 }
@@ -1105,7 +1122,7 @@ footer {
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, #fff, var(--accent-pink), var(--accent-cyan));
+  background: linear-gradient(135deg, #fff, var(--accent-purple), var(--accent-light-purple));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1115,23 +1132,23 @@ footer {
 .neon-button {
   position: relative;
   background: rgba(255, 255, 255, 0.05);
-  border: 2px solid var(--accent-pink);
-  color: var(--accent-pink);
+  border: 2px solid var(--accent-purple);
+  color: var(--accent-purple);
   padding: 0.8rem 2rem;
   border-radius: 25px;
   cursor: pointer;
   transition: all 0.3s ease;
-  text-shadow: 0 0 5px var(--accent-pink);
-  box-shadow: 0 0 10px rgba(255, 20, 147, 0.5),
-              inset 0 0 10px rgba(255, 20, 147, 0.1);
+  text-shadow: 0 0 5px var(--accent-purple);
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.5),
+              inset 0 0 10px rgba(139, 92, 246, 0.1);
 }
 
 .neon-button:hover {
-  background: var(--accent-pink);
+  background: var(--accent-purple);
   color: white;
   text-shadow: none;
-  box-shadow: 0 0 20px rgba(255, 20, 147, 0.8),
-              0 0 40px rgba(255, 20, 147, 0.6),
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.8),
+              0 0 40px rgba(139, 92, 246, 0.6),
               inset 0 0 10px rgba(255, 255, 255, 0.2);
   transform: scale(1.05);
 }
@@ -1140,7 +1157,7 @@ footer {
 .tag {
   display: inline-block;
   padding: 0.4rem 1rem;
-  background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-purple));
   color: white;
   border-radius: 25px;
   font-size: 0.8rem;
@@ -1155,15 +1172,15 @@ footer {
 }
 
 .tag-blue { 
-  background: linear-gradient(135deg, #00d4ff, #6b5ce7); 
+  background: linear-gradient(135deg, #ff1493, #6b5ce7); 
 }
 
 .tag-purple { 
   background: linear-gradient(135deg, #6b5ce7, #9b59d0); 
 }
 
-.tag-cyan { 
-  background: linear-gradient(135deg, #00d4ff, #00ffc8); 
+.tag-pink { 
+  background: linear-gradient(135deg, #ff1493, #ff69b4); 
 }
 
 .tag-green { 
@@ -1219,8 +1236,8 @@ footer {
 
 .program-badge:hover {
   background: rgba(255, 255, 255, 0.2);
-  border-color: var(--accent-pink);
-  box-shadow: 0 2px 10px rgba(255, 20, 147, 0.3);
+  border-color: var(--accent-purple);
+  box-shadow: 0 2px 10px rgba(139, 92, 246, 0.3);
   transform: translateY(-2px);
 }
 
@@ -1267,7 +1284,7 @@ footer {
   height: auto;
   object-fit: contain;
   border-radius: 15px;
-  box-shadow: 0 20px 80px rgba(255, 20, 147, 0.4),
+  box-shadow: 0 20px 80px rgba(139, 92, 246, 0.4),
               0 0 60px rgba(107, 92, 231, 0.4);
   border: 3px solid rgba(255, 255, 255, 0.3);
   cursor: default;
@@ -1312,13 +1329,13 @@ footer {
 }
 
 .gartic-intro a {
-  color: var(--accent-cyan);
+  color: var(--accent-light-purple);
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .gartic-intro a:hover {
-  color: var(--accent-pink);
+  color: var(--accent-purple);
   text-decoration: underline;
 }
 

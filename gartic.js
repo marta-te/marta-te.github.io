@@ -4,8 +4,8 @@ async function loadGarticArt() {
   container.innerHTML = '<p class="loading">Loading Gartic Phone art...</p>';
   
   try {
-    // Use absolute path from root
-    const response = await fetch('/gartic.json');
+    // Use relative path that works both locally and when hosted
+    const response = await fetch('./gartic.json');
     if (!response.ok) {
       throw new Error('Failed to load Gartic art data');
     }

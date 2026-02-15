@@ -1363,22 +1363,24 @@ footer {
   height: auto;
   display: block;
   border-radius: 20px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5),
-              inset 0 2px 0 rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(139, 92, 246, 0.4);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7),
+              inset 0 2px 0 rgba(139, 92, 246, 0.15),
+              0 0 20px rgba(139, 92, 246, 0.1);
 }
 
 .instagram-wrapper {
   border-radius: 20px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5),
-              inset 0 2px 0 rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(139, 92, 246, 0.4);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7),
+              inset 0 2px 0 rgba(139, 92, 246, 0.15),
+              0 0 20px rgba(139, 92, 246, 0.1);
   overflow: hidden;
   min-height: 600px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(10, 10, 10, 0.5);
 }
 
 .instagram-wrapper:not(.loaded) .instagram-media {

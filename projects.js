@@ -1,16 +1,22 @@
 // Load and display projects
 async function loadProjects() {
   try {
-    const response = await fetch('projects.json');
+    // Add cache-busting parameter to avoid GitHub Pages caching issues
+    const response = await fetch(`projects.json?v=${Date.now()}`);
+    console.log('Response status:', response.status, 'OK:', response.ok);
     if (!response.ok) {
-      throw new Error('Failed to load projects data');
+      throw new Error(`Failed to load projects data: ${response.status} ${response.statusText}`);
     }
     const data = await response.json();
+    console.log('Projects data loaded:', data);
     renderProjects(data.projects);
   } catch (error) {
     console.error('Error loading projects:', error);
     document.getElementById('projects-container').innerHTML = 
-      '<p class="error">Failed to load projects. Please try again later.</p>';
+      `<p class="error" style="color: var(--accent-light-purple); text-align: center; padding: 2rem;">
+        Failed to load projects: ${error.message}<br>
+        <small style="opacity: 0.7;">Try refreshing the page or check console for details.</small>
+      </p>`;
   }
 }
 

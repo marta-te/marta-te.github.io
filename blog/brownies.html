@@ -104,6 +104,77 @@
       transform: translateY(-2px) scale(1.05);
       box-shadow: 0 6px 20px rgba(167, 139, 250, 0.5);
     }
+    
+    /* Mobile responsive styles */
+    @media (max-width: 768px) {
+      .blog-post {
+        padding: 0.5rem;
+        max-width: 100%;
+      }
+      
+      .post-card {
+        padding: 1rem;
+        border-radius: 20px;
+        margin: 0;
+        background: rgba(10, 10, 10, 0.85);
+        border: 2px solid rgba(139, 92, 246, 0.4);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7),
+                    inset 0 1px 0 rgba(139, 92, 246, 0.15);
+      }
+      
+      .post-header {
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+      }
+      
+      .post-title {
+        font-size: 1.8rem;
+        line-height: 1.2;
+        margin-bottom: 0.5rem;
+      }
+      
+      .post-meta {
+        font-size: 0.85rem;
+      }
+      
+      .post-content {
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+      
+      .post-content h2 {
+        font-size: 1.4rem;
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+      }
+      
+      .post-content h3 {
+        font-size: 1.2rem;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      .post-content ul, .post-content ol {
+        padding-left: 1.2rem;
+        margin-bottom: 1rem;
+      }
+      
+      .post-content li {
+        margin-bottom: 0.3rem;
+      }
+      
+      .ingredient-list, .instruction-list {
+        padding: 0.75rem;
+        border-radius: 15px;
+        margin-bottom: 1rem;
+      }
+      
+      .back-link {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+        margin-top: 1rem;
+      }
+    }
   </style>
 </head>
 <body>

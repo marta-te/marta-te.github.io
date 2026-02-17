@@ -180,20 +180,89 @@
     }
     
     @media (max-width: 768px) {
+      .blog-post {
+        padding: 0.5rem;
+        max-width: 100%;
+      }
+      
       .post-card {
-        padding: 2rem 1.5rem;
+        padding: 1rem;
+        border-radius: 20px;
+        margin: 0;
+        background: rgba(10, 10, 10, 0.85);
+        border: 2px solid rgba(139, 92, 246, 0.4);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7),
+                    inset 0 1px 0 rgba(139, 92, 246, 0.15);
+      }
+      
+      .post-header {
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
       }
       
       .post-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        line-height: 1.2;
+        margin-bottom: 0.5rem;
+      }
+      
+      .post-meta {
+        font-size: 0.85rem;
+      }
+      
+      .post-content {
+        font-size: 1rem;
+        line-height: 1.6;
       }
       
       .post-content h2 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+      }
+      
+      .post-content h3 {
+        font-size: 1.2rem;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      .post-content ul, .post-content ol {
+        padding-left: 1.2rem;
+        margin-bottom: 1rem;
+      }
+      
+      .post-content li {
+        margin-bottom: 0.3rem;
+      }
+      
+      .materials-list, .steps-list {
+        padding: 0.75rem;
+        border-radius: 15px;
+        margin-bottom: 1rem;
+      }
+      
+      .tip-box {
+        padding: 0.75rem;
+        border-radius: 15px;
+        margin: 1rem 0;
+      }
+      
+      .post-image {
+        margin: 1rem 0;
+        border-radius: 15px;
       }
       
       .image-grid {
         grid-template-columns: 1fr;
+        gap: 1rem;
+        margin: 1rem 0;
+      }
+      
+      .back-link {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+        margin-top: 1rem;
       }
     }
   </style>
@@ -219,8 +288,23 @@
   </script>
 </head>
 <body>
-  <div class="blog-post">
-    <article class="post-card">
+  <nav>
+    <button class="nav-toggle" aria-label="Toggle navigation">
+      <span class="hamburger"></span>
+    </button>
+    <ul class="nav-menu">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../projects.html">Projects</a></li>
+      <li><a href="../art.html">Art</a></li>
+      <li><a href="../plants.html">Plants</a></li>
+      <li><a href="../scrapbook.html">Scrapbook</a></li>
+      <li><a href="../blog.html" class="active">Blog</a></li>
+    </ul>
+  </nav>
+
+  <main class="page-container">
+    <article class="blog-post">
+      <div class="post-card">
       <header class="post-header">
         <h1 class="post-title">Making Things with Epoxy: Dice Crafting</h1>
         <div class="post-meta">

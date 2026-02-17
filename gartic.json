@@ -9,49 +9,43 @@
     {
       "id": 2,
       "type": "image",
-      "url": "https://media.discordapp.net/attachments/774248341314994186/1389564564244398181/Screenshot_2025-06-28_at_15.39.07.png?ex=69886fd8&is=69871e58&hm=51081657edfed31a95a94c28a00ea8098bfa7191da3967bfe3c61d6aadb4a98d&=&format=webp&quality=lossless&width=2433&height=1289",
+      "url": "images/gartic/avatar_gartic.webp",
       "description": ""
     },
     {
       "id": 3,
       "type": "image",
-      "url": "https://media.discordapp.net/attachments/702432751181234206/1412112392254394388/h2.png?ex=6988ba26&is=698768a6&hm=e5b6d2a438d916d77908bb067847721f772ad8fb198f5d30359296c3f93adca5&=&format=webp&quality=lossless&width=1421&height=1553",
+      "url": "images/gartic/batcock_garic.webp",
       "description": ""
     },
     {
       "id": 4,
       "type": "image",
-      "url": "https://media.discordapp.net/attachments/702432751181234206/1407019722142388355/night33.png?ex=6988a83a&is=698756ba&hm=abdf07cc5be2823ce476f6387780107a1c63ad95306d24ec270f030abab10059&=&format=webp&quality=lossless&width=968&height=1553",
+      "url": "images/gartic/bread_gartic.webp",
       "description": ""
     },
     {
       "id": 5,
       "type": "image",
-      "url": "https://media.discordapp.net/attachments/1316050816909709412/1462109926133465109/gartic.png?ex=6988aefb&is=69875d7b&hm=e84ea84ded37f3f91431ef77d71f6953a670fd724713f98aaa08f5b3b9fe7ac8&=&format=webp&quality=lossless&width=1421&height=1553",
+      "url": "images/gartic/contrast_gartic.webp",
       "description": ""
     },
     {
       "id": 6,
       "type": "image",
-      "url": "https://media.discordapp.net/attachments/1316050816909709412/1439589959630852249/gartic.png?ex=69887ea0&is=69872d20&hm=adbc240493bac0ccbef7b6e9b29d0e879fe99ed1b6a1010b0cba802158a31935&=&format=webp&quality=lossless&width=1421&height=1553",
+      "url": "images/gartic/frog_gartic.webp",
       "description": ""
     },
     {
       "id": 7,
       "type": "image",
-      "url": "https://media.discordapp.net/attachments/1316050816909709412/1419363751110381588/gartic.png?ex=6988bd80&is=69876c00&hm=2d505a26cfc1bf00e5c3df87afbca9c2e77cae68541f2f50f29d3a845fa63b20&=&format=webp&quality=lossless&width=2149&height=1553",
+      "url": "images/gartic/hoobert_gartic.webp",
       "description": ""
     },
     {
       "id": 8,
       "type": "image",
-      "url": "https://media.discordapp.net/attachments/1316050816909709412/1414625458112299039/gartic.png?ex=6988a41f&is=6987529f&hm=4d8a329a95be0685582a0cf0c970001536cc88aabc352d1560add93b7babce4f&=&format=webp&quality=lossless&width=2149&height=1553",
-      "description": ""
-    },
-    {
-      "id": 9,
-      "type": "image",
-      "url": "https://media.discordapp.net/attachments/1316050816909709412/1411321994196160562/gartic.png?ex=69887d08&is=69872b88&hm=906b7393ceb224afcc7217e71adc33140bb5962dbca4205082d0b944f99cb2b5&=&format=webp&quality=lossless&width=1421&height=1553",
+      "url": "images/gartic/hyde_gartic.webp",
       "description": ""
     }
   ]

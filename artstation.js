@@ -6,13 +6,12 @@ async function loadArtStation(username) {
   try {
     const apiUrl = `https://www.artstation.com/users/${username}/projects.json`;
     
-    // Try different proxy services
+    // Try different proxy services with longer timeouts
     const proxies = [
       { 
         url: `https://api.allorigins.win/get?url=${encodeURIComponent(apiUrl)}`, 
         parse: (json) => {
           try {
-            // allorigins returns {contents: "stringified json", status: {...}}
             return typeof json.contents === 'string' ? JSON.parse(json.contents) : json.contents;
           } catch (e) {
             console.error('Failed to parse allorigins response:', e);
@@ -21,11 +20,15 @@ async function loadArtStation(username) {
         }
       },
       { 
-        url: `https://thingproxy.freeboard.io/fetch/${apiUrl}`, 
+        url: `https://corsproxy.io/?${encodeURIComponent(apiUrl)}`, 
         parse: (json) => json 
       },
       { 
-        url: `https://corsproxy.io/?${encodeURIComponent(apiUrl)}`, 
+        url: `https://cors-anywhere.herokuapp.com/${apiUrl}`, 
+        parse: (json) => json 
+      },
+      { 
+        url: `https://thingproxy.freeboard.io/fetch/${apiUrl}`, 
         parse: (json) => json 
       }
     ];
@@ -35,12 +38,17 @@ async function loadArtStation(username) {
     
     for (const proxy of proxies) {
       try {
+        console.log(`Trying proxy: ${proxy.url}`);
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 15000);
+        const timeoutId = setTimeout(() => controller.abort(), 20000); // Increased timeout
         
         const response = await fetch(proxy.url, {
           signal: controller.signal,
-          method: 'GET'
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+          }
         });
         clearTimeout(timeoutId);
         
@@ -48,14 +56,14 @@ async function loadArtStation(username) {
           const jsonData = await response.json();
           data = proxy.parse(jsonData);
           
-          if (data && data.data) {
+          if (data && (data.data || Array.isArray(data))) {
+            console.log('Successfully loaded ArtStation data');
             break;
-          } else {
-            data = null;
           }
         }
-      } catch (e) {
-        lastError = e;
+      } catch (error) {
+        lastError = error;
+        console.warn(`Proxy ${proxy.url} failed:`, error.message);
         continue;
       }
     }
@@ -70,13 +78,16 @@ async function loadArtStation(username) {
     console.error('Error loading ArtStation:', error);
     container.innerHTML = `
       <div class="error" style="text-align: center; padding: 2rem;">
-        <p style="margin-bottom: 1rem;">3D artwork loading is temporarily unavailable in this browser.</p>
+        <p style="margin-bottom: 1rem; color: rgba(255, 255, 255, 0.9);">Unable to load 3D artwork at the moment. Please try refreshing the page.</p>
+        <button onclick="loadArtStation('${username}')" 
+                style="padding: 0.8rem 1.5rem; background: linear-gradient(135deg, var(--accent-purple), var(--accent-light-purple)); color: white; border: none; border-radius: 25px; cursor: pointer; margin-right: 1rem;">
+          Try Again
+        </button>
         <a href="https://www.artstation.com/${username}" 
            target="_blank" 
            rel="noopener noreferrer" 
-           class="contact-btn"
-           style="display: inline-block; margin-top: 1rem;">
-          View Full Portfolio on ArtStation →
+           style="display: inline-block; padding: 0.8rem 1.5rem; background: rgba(10, 10, 10, 0.9); color: white; text-decoration: none; border-radius: 25px; border: 2px solid var(--accent-purple);">
+          View on ArtStation →
         </a>
       </div>
     `;
@@ -86,7 +97,7 @@ async function loadArtStation(username) {
 function renderArtStationProjects(projects) {
   const container = document.getElementById('artstation-gallery');
   
-  if (projects.length === 0) {
+  if (!projects || projects.length === 0) {
     container.innerHTML = '<p>No projects found.</p>';
     return;
   }
@@ -100,37 +111,19 @@ function renderArtStationProjects(projects) {
                loading="lazy" />
           <h3 class="card-title">${project.title}</h3>
           ${project.description ? `<p class="card-description">${truncateText(project.description, 100)}</p>` : ''}
+          <div class="artstation-meta">ArtStation</div>
         </a>
       `).join('')}
     </div>
-    <p style="text-align: center; margin-top: 2rem; color: #666;">
-      <em>All artwork hosted on <a href="https://www.artstation.com/${getUsername()}" target="_blank" rel="noopener noreferrer">ArtStation</a></em>
-    </p>
   `;
 }
 
 function truncateText(text, maxLength) {
-  // Remove HTML tags
   const plainText = text.replace(/<[^>]*>/g, '');
   if (plainText.length <= maxLength) return plainText;
   return plainText.substring(0, maxLength).trim() + '...';
 }
 
 function getUsername() {
-  // You'll need to set your ArtStation username here
   return 'marta-teivane';
 }
-
-// Initialize when tab is clicked
-document.addEventListener('DOMContentLoaded', () => {
-  const artstationTab = document.querySelector('[data-tab="3d"]');
-  if (artstationTab) {
-    artstationTab.addEventListener('click', () => {
-      const gallery = document.getElementById('artstation-gallery');
-      // Only load if not already loaded
-      if (gallery && gallery.querySelector('.loading')) {
-        loadArtStation(getUsername());
-      }
-    });
-  }
-});

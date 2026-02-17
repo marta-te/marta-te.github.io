@@ -9,26 +9,21 @@ async function loadArtStation(username) {
     // Try different proxy services with longer timeouts
     const proxies = [
       { 
+        url: `https://cors.bridged.cc/${apiUrl}`, 
+        parse: (json) => json 
+      },
+      { 
         url: `https://api.allorigins.win/get?url=${encodeURIComponent(apiUrl)}`, 
         parse: (json) => {
           try {
             return typeof json.contents === 'string' ? JSON.parse(json.contents) : json.contents;
           } catch (e) {
-            console.error('Failed to parse allorigins response:', e);
             return null;
           }
         }
       },
       { 
         url: `https://corsproxy.io/?${encodeURIComponent(apiUrl)}`, 
-        parse: (json) => json 
-      },
-      { 
-        url: `https://cors-anywhere.herokuapp.com/${apiUrl}`, 
-        parse: (json) => json 
-      },
-      { 
-        url: `https://thingproxy.freeboard.io/fetch/${apiUrl}`, 
         parse: (json) => json 
       }
     ];
@@ -38,16 +33,15 @@ async function loadArtStation(username) {
     
     for (const proxy of proxies) {
       try {
-        console.log(`Trying proxy: ${proxy.url}`);
+        // Silent attempt - no console logs unless successful
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 20000); // Increased timeout
+        const timeoutId = setTimeout(() => controller.abort(), 10000);
         
         const response = await fetch(proxy.url, {
           signal: controller.signal,
           method: 'GET',
           headers: {
             'Accept': 'application/json',
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
           }
         });
         clearTimeout(timeoutId);
@@ -57,13 +51,13 @@ async function loadArtStation(username) {
           data = proxy.parse(jsonData);
           
           if (data && (data.data || Array.isArray(data))) {
-            console.log('Successfully loaded ArtStation data');
+            console.log('✅ Successfully loaded ArtStation data');
             break;
           }
         }
       } catch (error) {
         lastError = error;
-        console.warn(`Proxy ${proxy.url} failed:`, error.message);
+        // Silent failure, try next proxy
         continue;
       }
     }
@@ -75,20 +69,23 @@ async function loadArtStation(username) {
     renderArtStationProjects(data.data || []);
     
   } catch (error) {
-    console.error('Error loading ArtStation:', error);
     container.innerHTML = `
-      <div class="error" style="text-align: center; padding: 2rem;">
-        <p style="margin-bottom: 1rem; color: rgba(255, 255, 255, 0.9);">Unable to load 3D artwork at the moment. Please try refreshing the page.</p>
-        <button onclick="loadArtStation('${username}')" 
-                style="padding: 0.8rem 1.5rem; background: linear-gradient(135deg, var(--accent-purple), var(--accent-light-purple)); color: white; border: none; border-radius: 25px; cursor: pointer; margin-right: 1rem;">
-          Try Again
-        </button>
+      <div class="artstation-fallback" style="text-align: center; padding: 2rem;">
+        <h3 style="margin: 0 0 1rem 0; color: var(--accent-light-purple); font-size: 1.3rem;">My 3D Portfolio</h3>
+        <p style="margin-bottom: 2rem; font-size: 1.1rem; color: rgba(255, 255, 255, 0.9); line-height: 1.6;">
+          Due to current proxy limitations, please visit my ArtStation directly to view my latest 3D work.
+        </p>
         <a href="https://www.artstation.com/${username}" 
            target="_blank" 
            rel="noopener noreferrer" 
-           style="display: inline-block; padding: 0.8rem 1.5rem; background: rgba(10, 10, 10, 0.9); color: white; text-decoration: none; border-radius: 25px; border: 2px solid var(--accent-purple);">
-          View on ArtStation →
+           style="display: inline-block; padding: 1rem 2rem; background: linear-gradient(135deg, rgba(10, 10, 10, 0.9), rgba(26, 19, 46, 0.9)); color: white; text-decoration: none; border-radius: 30px; font-weight: 500; border: 2px solid var(--accent-purple); box-shadow: 0 6px 25px rgba(139, 92, 246, 0.5), inset 0 0 15px rgba(139, 92, 246, 0.1); transition: all 0.3s ease; margin-bottom: 2rem;">
+          🎨 Visit ArtStation Portfolio →
         </a>
+        <div style="padding: 1.5rem; background: rgba(10, 10, 10, 0.7); border-radius: 20px; border: 2px solid rgba(139, 92, 246, 0.3); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(139, 92, 246, 0.15);">
+          <p style="margin: 0; font-size: 0.95rem; color: rgba(255, 255, 255, 0.85); line-height: 1.5;">
+            <strong>Featured:</strong> Character models • Environment art • Game assets • Blender creations
+          </p>
+        </div>
       </div>
     `;
   }
